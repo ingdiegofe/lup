@@ -1,0 +1,87 @@
+<app-navbar-in></app-navbar-in>
+<br>
+<div class="jumbotron jumbotron-fluid fadeIn" style="background-image:url('../assets/img/Carousel/lup2.jpg');">
+  <div class="container">
+    <h1 class="display-4">Contactanos</h1>
+
+  </div>
+</div>
+<div class="container fadeIn">
+
+      <div class="col-sm-12">
+        <div class="card border-secundary mb-3">
+           <div class="card-header"><p class="h2" style="color:gray;"> Mensaje </p></div>
+          <div class="card-body text-info">
+
+            <form>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Nombre</label>
+                <input [(ngModel)]="strNombre"
+                    type="text"
+                    class="form-control"
+                    id="strNombre"
+                    name="strNombre"
+                    placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Email</label>
+                <input [(ngModel)]="strEmail"
+                  type="email"
+                  class="form-control"
+                  id="strEmail"
+                  name="strEmail"
+                  placeholder="name@example.com">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Teléfono</label>
+                <input [(ngModel)]="strTelefono"
+                      type="text"
+                      class="form-control"
+                      id="strTelefono"
+                      name="strTelefono"
+                      placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Asunto</label>
+                <input [(ngModel)]="strAsunto"
+                      type="text"
+                      class="form-control"
+                      id="strAsunto"
+                      name="strAsunto"
+                      placeholder="">
+              </div>
+                <div class="form-group">
+                  <label for="exampleFormControlTextarea1">Mensaje</label>
+                  <textarea [(ngModel)]="strMensaje"
+                            class="form-control"
+                            id="strMensaje"
+                            name="strMensaje"
+                            rows="3">
+                   </textarea>
+                </div>
+              </form>
+
+              <button type="button" class="btn btn-dark btn-block" (click)="EnvioCorreo()">Enviar</button>
+              <div *ngIf="lngMensaje==0" class="alert alert-danger" role="alert">
+                  Debe llenar todos los campos
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+              </div>
+              <div *ngIf="lngMensaje==1" class="alert alert-success" role="alert">
+                  Mensaje enviado con exito.
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                     <span aria-hidden="true">&times;</span>
+                   </button>
+              </div>
+          </div>
+
+        </div>
+        <hr>
+
+      </div>
+    </div>
+
+    <br>
+
+    <app-footer></app-footer>
