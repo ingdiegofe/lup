@@ -194,7 +194,7 @@ exports.init = function(server) {
 
                     set = funciones.concatenarSQL(set, "fecha_modificacion = now()",",");
 
-                      console.log("update ad_usuario  set " + set + " where " + restriction );
+                     console.log("update ad_usuario  set " + set + " where " + restriction );
                     //Si tiene clave INICIO
                     if (funciones.validaParametro(request.payload.clave)) {
                               bcrypt.hash(request.payload.clave,null,null, function(err,hash){
@@ -249,7 +249,7 @@ exports.init = function(server) {
     });
     /*FIN - ACTUALIZAR USUARIO*/
 
-	    /*INICIO - DELETE usuario */
+	/*INICIO - DELETE usuario */
     server.route({
 
         method: 'DELETE',

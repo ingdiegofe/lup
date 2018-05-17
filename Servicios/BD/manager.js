@@ -2,6 +2,20 @@ var pg = require('pg');
 //var connect = "PostgreSQL://postgres:pruebas@127.0.0.1/postgres";
 var connect = "PostgreSQL://postgres:fernandez@45.63.11.179/LUP";
 
+function testConnection(reply){
+	pg.connect(connect, function(err, client, done){
+		if(err){
+			reply({
+				success: false, message: err.stack
+			});
+		}else{
+			reply({
+				success: true, message: "Connected successfully"
+			});
+		}
+	});
+}
+
 function show(fields, table, restriction, order, reply) {
 
     var query = "";
@@ -33,7 +47,7 @@ function show(fields, table, restriction, order, reply) {
                 data: null
             });
         }
-//console.log("tag error query " + query);
+		//console.log("tag error query " + query);
         client.query(query, function(err, result) {
             done();
             if (err) {
@@ -366,7 +380,7 @@ function addSelect(fields, table, values, reply) {
     });
 }
 
-
+exports.testConnection = testConnection;
 exports.show = show;
 exports.showNoOrder = showNoOrder;
 exports.add = add;

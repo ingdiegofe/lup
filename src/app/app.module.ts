@@ -36,6 +36,7 @@ import { AccionComponent } from './components/home/accion/accion.component';
 import { BlogComponent } from './components/home/blog/blog.component';
 import { HomelComponent } from './components/AdmLup/homel/homel.component';
 import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
+import { NavbarAdminComponent } from './components/shared/navbar-admin/navbar-admin.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
     AccionComponent,
     BlogComponent,
     HomelComponent,
-    HomeeComponent
+    HomeeComponent,
+    NavbarAdminComponent
   ],
   imports: [
     BrowserModule,

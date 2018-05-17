@@ -44,40 +44,29 @@ export class LoginComponent implements OnInit {
   }
 
   Ingresar(){
-
-    console.log(this.forma.valid)
-  if(this.forma.valid){
-
+	console.log(this.forma.valid)
+	if(this.forma.valid){
         this._loginService.postLogin(this.forma.value.usuario,this.forma.value.password,true)
         .subscribe(
           data=>{
             this.objConsulta = data;
-
             console.log(this.objConsulta)
             if(data.codigo==1){
-
-
-
               this.objIdentity.push(data.data.body);
               localStorage.setItem('identity', JSON.stringify(this.objIdentity));
               localStorage.setItem('token', JSON.stringify(this.objIdentity[0].token));
-
-
-                this.identity = this._loginService.getIdentity();
-                  console.log(this.identity);
-
-                this._usuariosService.putUsuario( this.objIdentity[0].token,
-                                                  "",
-                                                  "",
-                                                  "",
-                                                  "now()",
-                                                  "1",
-                                                  "",
-                                                  "",
-                                                  JSON.stringify(this.objIdentity[0].id_usuario)
-                                                )
-                 .subscribe(data=>{
-
+              this.identity = this._loginService.getIdentity();
+              console.log(this.identity);
+              this._usuariosService.putUsuario( this.objIdentity[0].token,
+				  "",
+				  "",
+				  "",
+				  "now()",
+				  "1",
+				  "",
+				  "",
+				  JSON.stringify(this.objIdentity[0].id_usuario)
+				).subscribe(data=>{
                    this.lngIngresoEntrar = 7;
                    setTimeout(()=>{ this.lngIngresoEntrar = 0;
                         console.log("LOG: " + this.objIdentity[0].id_tipo_usuario)
