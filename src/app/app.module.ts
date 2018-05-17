@@ -3,15 +3,19 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+//Rutas
+import { APP_ROUTING } from './app.routes';
+
+//servicios
+import { Globals } from './globals';
+import { LoginService } from './services/login/login.service';
+import { UsuarioService } from './services/usuario/usuario.service';
 
 import { AppComponent } from './app.component';
 import { NavbarInComponent } from './components/shared/navbar-in/navbar-in.component';
 import { NavbarLogComponent } from './components/shared/navbar-log/navbar-log.component';
 import { CarouselComponent } from './components/inicio/carousel/carousel.component';
 import { HomeComponent } from './components/inicio/home/home.component';
-
-//Rutas
-import { APP_ROUTING } from './app.routes';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ContenidoComponent } from './components/inicio/contenido/contenido.component';
 import { FaqComponent } from './components/inicio/faq/faq.component';
@@ -30,6 +34,8 @@ import { CatEmpresaComponent } from './components/home/cat-empresa/cat-empresa.c
 import { SubEmpresaComponent } from './components/home/sub-empresa/sub-empresa.component';
 import { AccionComponent } from './components/home/accion/accion.component';
 import { BlogComponent } from './components/home/blog/blog.component';
+import { HomelComponent } from './components/AdmLup/homel/homel.component';
+import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
 
 @NgModule({
   declarations: [
@@ -55,14 +61,22 @@ import { BlogComponent } from './components/home/blog/blog.component';
     CatEmpresaComponent,
     SubEmpresaComponent,
     AccionComponent,
-    BlogComponent
+    BlogComponent,
+    HomelComponent,
+    HomeeComponent
   ],
   imports: [
     BrowserModule,
     APP_ROUTING,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [
+    Globals,
+    LoginService,
+    UsuarioService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

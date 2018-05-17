@@ -20,69 +20,70 @@
                   <hr>
               </div>
           </div>
-          <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-8">
-                  <div class="form-group has-danger">
-                      <label class="sr-only" for="email">Correo electrónico</label>
-                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                          <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-                          <input  [(ngModel)]="strUsuario"
-                                  type="text"
-                                  name="strUsuario"
-                                  class="form-control"
-                                  id="email"
-                                  placeholder="usuario" required autofocus>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-2">
-                  <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                        <!--  <i class="fa fa-close"></i> Ejemplo mensaje error -->
-                      </span>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-8">
-                  <div class="form-group">
-                      <label class="sr-only" for="password">Contraseña</label>
-                      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
-                          <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                          <input  [(ngModel)]="strClave"
-                                  type="password"
-                                  name="strClave"
-                                  class="form-control"
-                                  id="password"
-                                 placeholder="Contraseña" required>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-2">
-                  <div class="form-control-feedback">
-                      <span class="text-danger align-middle">
-                      <!-- Put password error message here -->
-                      </span>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-8" style="padding-top: .35rem">
-                  <div class="form-check mb-2 mr-sm-2 mb-sm-0">
-                          <button class="btn btn-outline-info btn-block"  [routerLink]="['/inicio']" data-dismiss="modal"> Iniciar sesión</button>
-                  </div>
-              </div>
-              <div class="col-md-2"></div>
-          </div>
+
+          <form [formGroup]="forma" (ngSubmit)="Ingresar()">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="form-group has-danger">
+                            <label class="sr-only" for="email">Correo electrónico</label>
+                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                                <input  type="text"
+                                        class="form-control focusedInput"
+                                        formControlName="usuario"
+                                        placeholder="usuario" focus>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                              <!--  <i class="fa fa-close"></i> Ejemplo mensaje error -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <label class="sr-only" for="password">Contraseña</label>
+                            <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                                <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                                <input  type="password"
+                                        class="form-control"
+                                        formControlName="password"
+                                        placeholder="Contraseña" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-control-feedback">
+                            <span class="text-danger align-middle">
+                            <!-- Put password error message here -->
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8" style="padding-top: .35rem">
+                        <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                                <button type="submit" class="btn btn-outline-info btn-block"> Iniciar sesión</button>
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+          </form>
 
 
           <div class="row">
               <div class="col-md-2"></div>
               <div class="col-md-8 text-center" style="padding-top: .35rem; color:gray;">
                       <p><small>¿Aun no eres miembro? <a href="" [routerLink]="['/registrar']" data-dismiss="modal"> Registrate </a> </small> </p>
+                      <p><small>¿Olvidate tu contraseña? <a href="" [routerLink]="['/registrar']" data-dismiss="modal"> Registrate </a> </small> </p>
               </div>
               <div class="col-md-2"></div>
           </div>

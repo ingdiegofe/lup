@@ -11,6 +11,8 @@ import { SubEmpresaComponent } from './components/home/sub-empresa/sub-empresa.c
 import { EmpresaComponent } from './components/home/empresa/empresa.component';
 import { AccionComponent } from './components/home/accion/accion.component';
 import { BlogComponent } from './components/home/blog/blog.component';
+import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
+import { HomelComponent } from './components/AdmLup/homel/homel.component';
 
 
 const APP_ROUTES: Routes = [
@@ -26,6 +28,8 @@ const APP_ROUTES: Routes = [
   { path: 'Emp', component: EmpresaComponent },
   { path: 'Accion', component: AccionComponent },
   { path: 'blog', component: BlogComponent },
+  { path: 'homeE', component: HomeeComponent },
+  { path: 'homeL', component: HomelComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 
