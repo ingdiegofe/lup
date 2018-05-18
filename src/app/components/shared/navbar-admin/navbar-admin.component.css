@@ -19,12 +19,16 @@
 		padding: 10px 10px;
 		text-align:center;
 		font-weight:bold;
+		cursor: pointer;
+		color: white;
 	}
-		.navbar-lup-admin-menu ul li a i {
-			margin-right:10px;
-		}
+	
 		.navbar-lup-admin-menu ul li:active, .navbar-lup-admin-menu ul li:hover {
 			background-color:#1A5276;
+		}
+		
+		.navbar-lup-admin-menu ul li a i {
+			margin-right:10px;
 		}
 
 .navbar-dark .navbar-nav .nav-link {

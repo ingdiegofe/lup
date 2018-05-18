@@ -1,0 +1,35 @@
+
+.admin-container {
+	padding: 30px 30px;
+}
+
+.h-admin {
+	font-weight: bold;
+}
+
+.i-operation {
+	color: #2980B9;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.i-delete {
+	color: #E74C3C;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.table-admin {
+	width: 100%;
+}
+
+	.table-admin tr th{
+		color: white;
+		font-weight: bold;
+		background-color: #2980B9;
+		text-align: center;
+	}
+
+	.table-admin tr td {
+		text-align: center;
+	}

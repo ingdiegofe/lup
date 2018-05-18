@@ -13,6 +13,7 @@ import { AccionComponent } from './components/home/accion/accion.component';
 import { BlogComponent } from './components/home/blog/blog.component';
 import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
 import { HomelComponent } from './components/AdmLup/homel/homel.component';
+import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimiento-empresas/mantenimiento-empresas.component';
 
 
 const APP_ROUTES: Routes = [
@@ -30,6 +31,7 @@ const APP_ROUTES: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'homeE', component: HomeeComponent },
   { path: 'homeL', component: HomelComponent },
+  { path: 'mantE', component:  MantenimientoEmpresasComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

@@ -10,6 +10,7 @@ import { APP_ROUTING } from './app.routes';
 import { Globals } from './globals';
 import { LoginService } from './services/login/login.service';
 import { UsuarioService } from './services/usuario/usuario.service';
+import { AdminEmpresasService } from './services/admin/admin-empresas/admin-empresas.service';
 
 import { AppComponent } from './app.component';
 import { NavbarInComponent } from './components/shared/navbar-in/navbar-in.component';
@@ -37,6 +38,7 @@ import { BlogComponent } from './components/home/blog/blog.component';
 import { HomelComponent } from './components/AdmLup/homel/homel.component';
 import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
 import { NavbarAdminComponent } from './components/shared/navbar-admin/navbar-admin.component';
+import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimiento-empresas/mantenimiento-empresas.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { NavbarAdminComponent } from './components/shared/navbar-admin/navbar-ad
     BlogComponent,
     HomelComponent,
     HomeeComponent,
-    NavbarAdminComponent
+    NavbarAdminComponent,
+    MantenimientoEmpresasComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +80,8 @@ import { NavbarAdminComponent } from './components/shared/navbar-admin/navbar-ad
   providers: [
     Globals,
     LoginService,
-    UsuarioService
+    UsuarioService,
+	AdminEmpresasService
   ],
   bootstrap: [AppComponent]
 })
