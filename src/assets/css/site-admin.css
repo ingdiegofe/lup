@@ -4,12 +4,11 @@
 }
 
 .admin-form-container {
-	padding: 30px 30px;
-	max-width: 600px;
+	max-width:500px;
 }
 
 .h-admin {
-	font-weight: bold;
+  font-weight: bold;
   color: #2E4053;
 }
 
@@ -26,7 +25,7 @@
 }
 
 .table-admin {
-	width: 100%;
+  width: 100%;
   font-size: 12px;
 }
 

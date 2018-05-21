@@ -40,6 +40,8 @@ import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
 import { NavbarAdminComponent } from './components/shared/navbar-admin/navbar-admin.component';
 import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimiento-empresas/mantenimiento-empresas.component';
 import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empresa/formulario-empresa.component';
+import { LoaderAdminComponent } from './components/shared/loader-admin/loader-admin.component';
+import { MensajeAdminComponent } from './components/shared/mensaje-admin/mensaje-admin.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empre
     HomeeComponent,
     NavbarAdminComponent,
     MantenimientoEmpresasComponent,
-    FormularioEmpresaComponent
+    FormularioEmpresaComponent,
+    LoaderAdminComponent,
+    MensajeAdminComponent
   ],
   imports: [
     BrowserModule,
