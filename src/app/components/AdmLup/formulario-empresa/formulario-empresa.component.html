@@ -1,0 +1,40 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="admin-container">
+  <h3 class="h-admin">{{ titulo }}</h3>
+  <br/>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-6">
+          <label>Nombre empresa:</label>
+          <input type="text" class="form-control" placeholder="Nombre empresa" maxlength="200" [(ngModel)]="empresa.nombre">
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-3">
+          <label>Correo electónico:</label>
+          <input type="email" class="form-control" placeholder="Correo electónico" maxlength="50" [(ngModel)]="empresa.correo">
+        </div>
+        <div class="col-3">
+          <label>Teléfono:</label>
+          <input type="text" class="form-control" placeholder="Teléfono" maxlength="50" [(ngModel)]="empresa.telefono">
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-3">
+          <label>Url sitio web:</label>
+          <input type="text" class="form-control" placeholder="Url sitio web" maxlength="300" [(ngModel)]="empresa.url">
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-6">
+          <label>Dirección empresa:</label>
+          <input type="text" class="form-control" placeholder="Dirección empresa" maxlength="200" [(ngModel)]="empresa.direccion">
+        </div>
+      </div>
+      <br/>
+      <button class="btn btn-sm btn-admin-lup" (click)="AgregarEmpresa()">Guardar</button>
+    </div>
+</div>

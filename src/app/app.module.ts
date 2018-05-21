@@ -39,6 +39,7 @@ import { HomelComponent } from './components/AdmLup/homel/homel.component';
 import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
 import { NavbarAdminComponent } from './components/shared/navbar-admin/navbar-admin.component';
 import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimiento-empresas/mantenimiento-empresas.component';
+import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empresa/formulario-empresa.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimient
     HomelComponent,
     HomeeComponent,
     NavbarAdminComponent,
-    MantenimientoEmpresasComponent
+    MantenimientoEmpresasComponent,
+    FormularioEmpresaComponent
   ],
   imports: [
     BrowserModule,

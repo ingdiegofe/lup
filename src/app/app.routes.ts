@@ -14,6 +14,7 @@ import { BlogComponent } from './components/home/blog/blog.component';
 import { HomeeComponent } from './components/AdmEmpresa/homee/homee.component';
 import { HomelComponent } from './components/AdmLup/homel/homel.component';
 import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimiento-empresas/mantenimiento-empresas.component';
+import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empresa/formulario-empresa.component';
 
 
 const APP_ROUTES: Routes = [
@@ -31,7 +32,8 @@ const APP_ROUTES: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'homeE', component: HomeeComponent },
   { path: 'homeL', component: HomelComponent },
-  { path: 'mantE', component:  MantenimientoEmpresasComponent },
+  { path: 'mantE', component: MantenimientoEmpresasComponent },
+  { path: 'formE/:operacion', component: FormularioEmpresaComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

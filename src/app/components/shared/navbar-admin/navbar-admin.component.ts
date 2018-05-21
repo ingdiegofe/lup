@@ -13,8 +13,4 @@ export class NavbarAdminComponent implements OnInit {
   ngOnInit() {
   }
 
-  IraMantenimientoEmpresas(){
-	  this.router.navigate(['/mantE']);
-  }
-  
 }

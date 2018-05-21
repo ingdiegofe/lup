@@ -1,5 +1,5 @@
 .navbar-lup-admin {
-	background-color: #2980B9;
+	background-color: #2E4053;
 }
 
 .navbar-lup-admin-img {
@@ -22,12 +22,12 @@
 		cursor: pointer;
 		color: white;
 	}
-	
+
 		.navbar-lup-admin-menu ul li:active, .navbar-lup-admin-menu ul li:hover {
-			background-color:#1A5276;
+			background-color:#797D7F;
 		}
-		
-		.navbar-lup-admin-menu ul li a i {
+
+		.navbar-lup-admin-menu ul li i {
 			margin-right:10px;
 		}
 
@@ -36,7 +36,7 @@
 }
 
 .navbar-dark .navbar-nav .active {
-	background-color:#1A5276;
+	background-color:#797D7F;
 }
 
 .navbar-dark .navbar-toggler {
@@ -47,7 +47,3 @@
 .navbar-dark .navbar-toggler-icon {
 	color: white;
 }
-
-
-
-
