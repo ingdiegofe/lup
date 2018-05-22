@@ -10,6 +10,17 @@ export class AdminEmpresasService {
 
   constructor(private http: Http, private globals: Globals) { }
 
+  InfoEmpresa(idempresa){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let postUrl = this.url + '/info-empresa';
+
+    return this.http.post(postUrl, idempresa, { headers: headers })
+    .map(res => {
+      console.log(res.json());
+      return res.json();
+    });
+  }
+
   AgregarEmpresa(empresa){
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let postUrl = this.url + '/agregar-empresa';

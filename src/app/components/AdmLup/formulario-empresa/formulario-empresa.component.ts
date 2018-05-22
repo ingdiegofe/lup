@@ -14,16 +14,8 @@ declare function DesplegarMensajeAdmin(strTipo, strMensaje): any;
 export class FormularioEmpresaComponent implements OnInit {
 
 
-  strTitulo: string;
-  Empresa = {
-    id_empresa: 0,
-    nombre: "",
-    correo: "",
-    telefono: "",
-    direccion: "",
-    url: ""
-  };
-
+  Titulo: string;
+  Empresa = {  id_empresa: 0,  nombre: "", correo: "", telefono: "", direccion: "",  url: "" };
 
   constructor(private _adminEmpresasService: AdminEmpresasService, private route: ActivatedRoute) { }
 
@@ -52,13 +44,28 @@ export class FormularioEmpresaComponent implements OnInit {
     }
   }
 
+  InfoEmpresa(){
+    this._adminEmpresasService.InfoEmpresa({ idempresa: '8' })
+      .subscribe(data => {
+    Finalizado();
+        if(data.code==1){
+          this.Empresa = data.body.empresa[0];
+        }else{
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+    });
+  }
+
   ngOnInit() {
     console.log(this.route.snapshot.params['operacion']);
     let strOperacion = this.route.snapshot.params['operacion']
     if (strOperacion == "agregar") {
-      this.strTitulo = "Agregar nueva empresa";
+      this.Titulo = "Agregar nueva empresa";
+    } else if (strOperacion == "informacion"){
+      this.Titulo = "Información empresa";
+      this.InfoEmpresa();
     } else if (strOperacion == "modificar") {
-      this.strTitulo = "Modificar empresa";
+      this.Titulo = "Modificar empresa";
       // Obtener información de empresa
     }
   }
