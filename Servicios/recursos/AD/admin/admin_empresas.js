@@ -8,6 +8,55 @@ var funciones = require('../../../Funciones/funciones');
 var Empresa;
 var Reply;
 
+// #########################################  ACTUALIZAR EMPRESA  #########################################
+
+server.route({
+	method: 'POST',
+	path: '/admin-empresas/actualizar-empresa',
+	config: {
+	  auth: false,
+	  handler: ActualizarEmpresa
+	}
+});
+
+function ActualizarEmpresa(request, reply){
+	Reply = reply;
+	Empresa = request.payload.empresa;
+	
+	// Validar valores obligatorios
+	if( !funciones.validaParametro(Empresa.nombre) ){
+		Reply({ code: 0, message: "Nombre de empresa no puede ir en blanco" });
+	}else{
+		// Validar que nuevo nombre no exista en base de datos
+		dbManager.show('id_empresa','ad_empresa',"nombre='" + Empresa.nombre + "'", "", cbVerificarEmpresaRepetidaAct);
+	}
+}
+
+function cbVerificarEmpresaRepetidaAct(result){
+	if(!result.success){
+		Reply({ code: 0, message: "Ya existe una empresa con el nuevo nombre ingresado" });
+	}else{
+		let strSQLSet = " nombre = '" + Empresa.nombre + "'";
+		// Adjuntar valores opcionales
+		if (funciones.validaParametro(Empresa.correo)) strSQLSet += ", correo = '" + Empresa.correo  + "'";
+		if (funciones.validaParametro(Empresa.telefono)) strSQLSet += ", telefono = '" + Empresa.telefono  + "'";
+		if (funciones.validaParametro(Empresa.direccion)) strSQLSet += ", direccion = '" + Empresa.direccion  + "'";
+		if (funciones.validaParametro(Empresa.url)) strSQLSet += ", url = '" + Empresa.url  + "'";
+		// update(set, table, restriction, reply)
+		dbManager.update(strSQLSet, 'ad_empresa', "id_empresa = " + Empresa.id_empresa, cbActualizarEmpresa);
+	}
+}
+
+function cbActualizarEmpresa(result){
+	if(!result.success){
+		Reply({ code: 0, message: "Error actualizando información de empresa" });
+	}else{
+		Reply({ code: 1, message: "Empresa actualizada exitosamente" });
+	}
+}
+
+
+
 // #########################################  INFORMACION DE EMPRESA  #########################################
 
 server.route({
@@ -74,24 +123,24 @@ function cbVerificarEmpresaRepetida(result){
 			reply({ code: 0, message: "Ya existe otra empresa con el nombre ingresado" });
 		}else{
 			// Armar campos para query de inserción
-			_strCampos = _strCampos + "nombre";
-			_strValores = _strValores + "'" + Empresa.nombre + "'";
+			_strCampos += "nombre";
+			_strValores += "'" + Empresa.nombre + "'";
 			// Validar parametros opcionales
 			if (funciones.validaParametro(Empresa.correo)) {
-				_strCampos = _strCampos + ", correo";
-				_strValores = _strValores + ", '" + Empresa.correo + "'";
+				_strCampos += ", correo";
+				_strValores += ", '" + Empresa.correo + "'";
 			}
 			if (funciones.validaParametro(Empresa.telefono)) {
-				_strCampos = _strCampos + ", telefono";
-				_strValores = _strValores + ", '" + Empresa.telefono + "'";
+				_strCampos += ", telefono";
+				_strValores += ", '" + Empresa.telefono + "'";
 			}
 			if (funciones.validaParametro(Empresa.direccion)) {
-				_strCampos = _strCampos + ", direccion";
-				_strValores = _strValores + ", '" + Empresa.direccion + "'";
+				_strCampos += ", direccion";
+				_strValores += ", '" + Empresa.direccion + "'";
 			}
 			if (funciones.validaParametro(Empresa.url)) {
 				_strCampos = _strCampos + ", url";
-				_strValores = _strValores + ", '" + Empresa.url + "'";
+				_strValores += ", '" + Empresa.url + "'";
 			}
 			// Agregar campos de gestión internos
 			_strCampos += ", fecha_creacion, estado, fecha_modificacion, usuario_modifica";

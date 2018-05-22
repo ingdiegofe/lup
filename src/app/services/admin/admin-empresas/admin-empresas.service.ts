@@ -20,6 +20,17 @@ export class AdminEmpresasService {
       return res.json();
     });
   }
+  
+  ActualizarEmpresa(empresa){
+	let headers = new Headers({ 'Content-Type': 'application/json' });
+    let postUrl = this.url + '/actualizar-empresa';
+
+    return this.http.post(postUrl, empresa, { headers: headers })
+    .map(res => {
+      console.log(res.json());
+      return res.json();
+    });
+  }
 
   AgregarEmpresa(empresa){
     let headers = new Headers({ 'Content-Type': 'application/json' });

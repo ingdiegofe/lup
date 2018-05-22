@@ -13,12 +13,36 @@ declare function DesplegarMensajeAdmin(strTipo, strMensaje): any;
 })
 export class FormularioEmpresaComponent implements OnInit {
 
-
+  Operacion: string;
   Titulo: string;
   Empresa = {  id_empresa: 0,  nombre: "", correo: "", telefono: "", direccion: "",  url: "" };
 
   constructor(private _adminEmpresasService: AdminEmpresasService, private route: ActivatedRoute) { }
 
+  ActualizarEmpresa() {
+    let _strMensaje = "";
+    // Validar campos obligatorios de empresa
+    if (!ValidarCampo(this.Empresa.nombre)) {
+      _strMensaje = "Se deben ingresar todos los campos obligatorios";
+    }
+    // Validar campos no obligatorios
+
+    if(_strMensaje != ""){ 	
+	  DesplegarMensajeAdmin("Error", _strMensaje);
+	}else{
+	  Cargando();
+      this._adminEmpresasService.ActualizarEmpresa({ empresa: this.Empresa })
+        .subscribe(data => {
+		  Finalizado();
+          if(data.code==1){
+            DesplegarMensajeAdmin("Ok", data.message);
+          }else{
+            DesplegarMensajeAdmin("Error", data.message);
+          }
+      });
+    }
+  }
+  
   AgregarEmpresa() {
     let _strMensaje = "";
     // Validar campos obligatorios de empresa
@@ -27,8 +51,7 @@ export class FormularioEmpresaComponent implements OnInit {
     }
     // Validar campos no obligatorios
 
-    // Enviar a ingresar empresa si validaciones fueron aprobadas
-    if(_strMensaje != ""){
+    if(_strMensaje != ""){ 	
 	  DesplegarMensajeAdmin("Error", _strMensaje);
 	}else{
 	  Cargando();
@@ -58,7 +81,8 @@ export class FormularioEmpresaComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.route.snapshot.params['operacion']);
-    let strOperacion = this.route.snapshot.params['operacion']
+    let strOperacion = this.route.snapshot.params['operacion'];
+	this.Operacion = strOperacion;
     if (strOperacion == "agregar") {
       this.Titulo = "Agregar nueva empresa";
     } else if (strOperacion == "informacion"){
@@ -66,7 +90,7 @@ export class FormularioEmpresaComponent implements OnInit {
       this.InfoEmpresa();
     } else if (strOperacion == "modificar") {
       this.Titulo = "Modificar empresa";
-      // Obtener información de empresa
+      this.InfoEmpresa();
     }
   }
 
