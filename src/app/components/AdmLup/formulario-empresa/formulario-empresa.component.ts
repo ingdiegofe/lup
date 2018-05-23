@@ -27,7 +27,7 @@ export class FormularioEmpresaComponent implements OnInit {
     }
     // Validar campos no obligatorios
 
-    if(_strMensaje != ""){ 	
+    if(_strMensaje != ""){
 	  DesplegarMensajeAdmin("Error", _strMensaje);
 	}else{
 	  Cargando();
@@ -42,7 +42,7 @@ export class FormularioEmpresaComponent implements OnInit {
       });
     }
   }
-  
+
   AgregarEmpresa() {
     let _strMensaje = "";
     // Validar campos obligatorios de empresa
@@ -51,7 +51,7 @@ export class FormularioEmpresaComponent implements OnInit {
     }
     // Validar campos no obligatorios
 
-    if(_strMensaje != ""){ 	
+    if(_strMensaje != ""){
 	  DesplegarMensajeAdmin("Error", _strMensaje);
 	}else{
 	  Cargando();
@@ -68,7 +68,8 @@ export class FormularioEmpresaComponent implements OnInit {
   }
 
   InfoEmpresa(){
-    this._adminEmpresasService.InfoEmpresa({ idempresa: '8' })
+    let idEmpresa = this.route.snapshot.params['idempresa'];
+    this._adminEmpresasService.InfoEmpresa({ idempresa: idEmpresa })
       .subscribe(data => {
     Finalizado();
         if(data.code==1){

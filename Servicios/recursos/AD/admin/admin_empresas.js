@@ -8,6 +8,31 @@ var funciones = require('../../../Funciones/funciones');
 var Empresa;
 var Reply;
 
+// #########################################  BORRAR EMPRESA  #########################################
+
+server.route({
+	method: 'POST',
+	path: '/admin-empresas/actualizar-empresa',
+	config: {
+	  auth: false,
+	  handler: BorrarEmpresa
+	}
+});
+
+function BorrarEmpresa(request, reply){
+	Reply = reply;
+	// remove(table, restriction, reply)
+	dbManager.remove('ad_empresa', 'id_empresa = ' + request.payload.idempresa, cbBorrarEmpresa);
+}
+
+function cbBorrarEmpresa(result){
+	if(!result.success){
+		Reply({ code: 0, message: "Error eliminando empresa" });
+	}else{
+		Reply({ code: 1, message: "Empresa eliminada exitosamente" });
+	}
+}
+
 // #########################################  ACTUALIZAR EMPRESA  #########################################
 
 server.route({
@@ -22,7 +47,7 @@ server.route({
 function ActualizarEmpresa(request, reply){
 	Reply = reply;
 	Empresa = request.payload.empresa;
-	
+
 	// Validar valores obligatorios
 	if( !funciones.validaParametro(Empresa.nombre) ){
 		Reply({ code: 0, message: "Nombre de empresa no puede ir en blanco" });
@@ -173,7 +198,7 @@ server.route({
 
 function ListaEmpresas(request, reply) {
 	Reply = reply;
-	_strSQL = 	"SELECT E.nombre, E.fecha_modificacion, U.nombre AS usuario_modifica " +
+	_strSQL = 	"SELECT E.id_empresa, E.nombre, E.fecha_modificacion, U.nombre AS usuario_modifica " +
 				"FROM ad_empresa E, ad_usuario U " +
 				"WHERE E.usuario_modifica = U.id_usuario ";
 	dbManager.Correr(_strSQL, cbListaEmpresas);

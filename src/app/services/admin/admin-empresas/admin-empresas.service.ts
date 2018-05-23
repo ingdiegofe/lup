@@ -20,9 +20,20 @@ export class AdminEmpresasService {
       return res.json();
     });
   }
-  
+
+  BorrarEmpresa(idempresa){
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let postUrl = this.url + '/borrar-empresa';
+
+    return this.http.post(postUrl, idempresa, { headers: headers })
+    .map(res => {
+      console.log(res.json());
+      return res.json();
+    });
+  }
+
   ActualizarEmpresa(empresa){
-	let headers = new Headers({ 'Content-Type': 'application/json' });
+	  let headers = new Headers({ 'Content-Type': 'application/json' });
     let postUrl = this.url + '/actualizar-empresa';
 
     return this.http.post(postUrl, empresa, { headers: headers })

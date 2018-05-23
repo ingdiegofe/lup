@@ -11,15 +11,42 @@ declare function DesplegarMensajeAdmin(strTipo, strMensaje): any;
 export class MantenimientoEmpresasComponent implements OnInit {
 
   empresas = [];
-
+  EmpresaABorrar;
   constructor(private _adminEmpresasService:AdminEmpresasService, private router: Router) { }
 
   ngOnInit() {
     this.ObtenerEmpresas();
   }
 
+  VerModalBorrarEmpresa(Empresa){
+    this.EmpresaABorrar = Empresa;
+    //$('#mdBorrarEmpresa').modal('show');
+  }
+
+  BorrarEmpresa(){
+    this._adminEmpresasService.BorrarEmpresa({ idempresa: this.EmpresaABorrar.id_empresa })
+	  .subscribe(data=>{
+        //$('#mdBorrarEmpresa').modal('hide');
+		    if(data.code==1){
+          DesplegarMensajeAdmin("Ok", data.message);
+          this.ObtenerEmpresas();
+        }else{
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+	  });
+  }
+
   IrAFormularioAgregar(){
     this.router.navigate(['formE/agregar']);
+  }
+
+  IrAFormularioInformacion(Empresa){
+    console.log(Empresa);
+    this.router.navigate(['formE/informacion/' + Empresa.id_empresa]);
+  }
+
+  IrAFormularioModificar(Empresa){
+    this.router.navigate(['formE/modificar/' + Empresa.id_empresa]);
   }
 
   ObtenerEmpresas()

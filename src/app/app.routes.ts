@@ -33,7 +33,7 @@ const APP_ROUTES: Routes = [
   { path: 'homeE', component: HomeeComponent },
   { path: 'homeL', component: HomelComponent },
   { path: 'mantE', component: MantenimientoEmpresasComponent },
-  { path: 'formE/:operacion', component: FormularioEmpresaComponent },
+  { path: 'formE/:operacion/:idempresa', component: FormularioEmpresaComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

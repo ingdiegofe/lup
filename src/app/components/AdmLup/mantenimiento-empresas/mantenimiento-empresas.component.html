@@ -2,8 +2,9 @@
 <div class="admin-container">
 	<h3 class="h-admin">Mantenimiento de empresas</h3>
 	<br/>
-	<app-mensaje-admin></app-mensaje-admin>
-	<div style="text-align: center;">
+	<div style="text-align:center;">
+		<app-mensaje-admin></app-mensaje-admin>
+		<br/>
 		<button class="btn btn-sm btn-admin-lup" (click)="IrAFormularioAgregar()">Agregar empresa</button>
 	</div>
 	<br/>
@@ -23,13 +24,41 @@
 					<td>{{empresa.fecha_modificacion}}</td>
 					<td>{{empresa.usuario_modifica}}</td>
 					<td>
-						<i class="fas fa-search fa-lg i-operation" title="Detalles"></i>
-						<i class="fas fa-edit fa-lg i-operation" title="Modificar"></i>
-						<i class="fas fa-trash fa-lg i-delete" title="Eliminar"></i>
+						<i class="fas fa-search fa-lg i-operation" title="Detalles" (click)="IrAFormularioInformacion(empresa)"></i>
+						<i class="fas fa-edit fa-lg i-operation" title="Modificar" (click)="IrAFormularioModificar(empresa)"></i>
+						<i class="fas fa-trash fa-lg i-delete" title="Eliminar" (click)="VerModalBorrarEmpresa(empresa)"></i>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	<br/>
+</div>
+
+<div *ngIf="EmpresaABorrar">
+	<div class="modal" tabindex="-1" role="dialog" id="mdBorrarEmpresa">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div style="text-align:center;">
+						<h5 class="modal-title">Borrar empresa</h5>
+					</div>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+				</div>
+				<div class="modal-body">
+					<p>Confirma que desea borrar la empresa {{ EmpresaABorrar.nombre }}?</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-admin-lup">Borrar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="text-align:center">
+  <app-loader-admin></app-loader-admin>
 </div>
