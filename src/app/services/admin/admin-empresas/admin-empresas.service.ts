@@ -10,8 +10,21 @@ export class AdminEmpresasService {
 
   constructor(private http: Http, private globals: Globals) { }
 
+  ListaCategorias(){
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': token });
+    let getUrl = this.url + '/lista-categorias';
+
+    return this.http.get(getUrl, { headers: headers })
+      .map(res => {
+        console.log(res.json());
+        return res.json();
+      });
+  }
+
   InfoEmpresa(idempresa){
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
     let postUrl = this.url + '/info-empresa';
 
     return this.http.post(postUrl, idempresa, { headers: headers })
@@ -22,7 +35,8 @@ export class AdminEmpresasService {
   }
 
   BorrarEmpresa(idempresa){
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
     let postUrl = this.url + '/borrar-empresa';
 
     return this.http.post(postUrl, idempresa, { headers: headers })
@@ -33,7 +47,8 @@ export class AdminEmpresasService {
   }
 
   ActualizarEmpresa(empresa){
-	  let headers = new Headers({ 'Content-Type': 'application/json' });
+    let token = localStorage.getItem('token');
+	  let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
     let postUrl = this.url + '/actualizar-empresa';
 
     return this.http.post(postUrl, empresa, { headers: headers })
@@ -44,7 +59,8 @@ export class AdminEmpresasService {
   }
 
   AgregarEmpresa(empresa){
-    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
     let postUrl = this.url + '/agregar-empresa';
 
     return this.http.post(postUrl, empresa, { headers: headers })
@@ -55,8 +71,8 @@ export class AdminEmpresasService {
   }
 
   getEmpresas() {
-
-    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': token });
     let body = "?estado=A";
     let getUrl = this.url + '/lista-empresas' + body;
 

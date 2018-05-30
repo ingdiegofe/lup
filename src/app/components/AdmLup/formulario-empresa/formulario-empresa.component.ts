@@ -15,7 +15,8 @@ export class FormularioEmpresaComponent implements OnInit {
 
   Operacion: string;
   Titulo: string;
-  Empresa = {  id_empresa: 0,  nombre: "", correo: "", telefono: "", direccion: "",  url: "" };
+  Empresa = { id_empresa: 0, nombre: "", correo: "", telefono: "", direccion: "", url: "", nit: "", categoria: 0, representante_legal: "" };
+  categorias = [];
 
   constructor(private _adminEmpresasService: AdminEmpresasService, private route: ActivatedRoute) { }
 
@@ -27,20 +28,32 @@ export class FormularioEmpresaComponent implements OnInit {
     }
     // Validar campos no obligatorios
 
-    if(_strMensaje != ""){
-	  DesplegarMensajeAdmin("Error", _strMensaje);
-	}else{
-	  Cargando();
+    if (_strMensaje != "") {
+      DesplegarMensajeAdmin("Error", _strMensaje);
+    } else {
+      Cargando();
       this._adminEmpresasService.ActualizarEmpresa({ empresa: this.Empresa })
         .subscribe(data => {
-		  Finalizado();
-          if(data.code==1){
+          Finalizado();
+          if (data.code == 1) {
             DesplegarMensajeAdmin("Ok", data.message);
-          }else{
+          } else {
             DesplegarMensajeAdmin("Error", data.message);
           }
-      });
+        });
     }
+  }
+
+  ListaCategorias() {
+    this._adminEmpresasService.ListaCategorias()
+      .subscribe(data => {
+        if (data.code == 1) {
+          console.log(data.data.body);
+          this.categorias = data.data.body;
+        } else {
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+      });
   }
 
   AgregarEmpresa() {
@@ -51,48 +64,51 @@ export class FormularioEmpresaComponent implements OnInit {
     }
     // Validar campos no obligatorios
 
-    if(_strMensaje != ""){
-	  DesplegarMensajeAdmin("Error", _strMensaje);
-	}else{
-	  Cargando();
+    if (_strMensaje != "") {
+      DesplegarMensajeAdmin("Error", _strMensaje);
+    } else {
+      Cargando();
       this._adminEmpresasService.AgregarEmpresa({ empresa: this.Empresa })
         .subscribe(data => {
-		  Finalizado();
-          if(data.code==1){
+          Finalizado();
+          if (data.code == 1) {
             DesplegarMensajeAdmin("Ok", data.message);
-          }else{
+          } else {
             DesplegarMensajeAdmin("Error", data.message);
           }
-      });
+        });
     }
   }
 
-  InfoEmpresa(){
+  InfoEmpresa() {
     let idEmpresa = this.route.snapshot.params['idempresa'];
     this._adminEmpresasService.InfoEmpresa({ idempresa: idEmpresa })
       .subscribe(data => {
-    Finalizado();
-        if(data.code==1){
+        Finalizado();
+        if (data.code == 1) {
           this.Empresa = data.body.empresa[0];
-        }else{
+          this.ListaCategorias();
+        } else {
           DesplegarMensajeAdmin("Error", data.message);
         }
-    });
+      });
   }
 
   ngOnInit() {
     console.log(this.route.snapshot.params['operacion']);
     let strOperacion = this.route.snapshot.params['operacion'];
-	this.Operacion = strOperacion;
+    this.Operacion = strOperacion;
     if (strOperacion == "agregar") {
       this.Titulo = "Agregar nueva empresa";
-    } else if (strOperacion == "informacion"){
+      this.ListaCategorias();
+    } else if (strOperacion == "informacion") {
       this.Titulo = "Información empresa";
       this.InfoEmpresa();
     } else if (strOperacion == "modificar") {
       this.Titulo = "Modificar empresa";
       this.InfoEmpresa();
     }
+    //this.ListaCategorias();
   }
 
   ngOnDestroy() {

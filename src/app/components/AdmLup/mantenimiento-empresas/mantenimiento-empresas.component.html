@@ -35,29 +35,25 @@
 	<br/>
 </div>
 
-<div *ngIf="EmpresaABorrar">
 	<div class="modal" tabindex="-1" role="dialog" id="mdBorrarEmpresa">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<div class="modal-header">
-					<div style="text-align:center;">
+				<div class="modal-header text-center">
 						<h5 class="modal-title">Borrar empresa</h5>
-					</div>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	          <span aria-hidden="true">&times;</span>
 	        </button>
 				</div>
 				<div class="modal-body">
-					<p>Confirma que desea borrar la empresa {{ EmpresaABorrar.nombre }}?</p>
+					¿Confirma que desea borrar la empresa <span style="font-weight:bold;">{{ EmpresaABorrar.nombre }}</span>?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-admin-lup">Borrar</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-admin-lup" (click)="BorrarEmpresa()">Borrar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
 <div style="text-align:center">
   <app-loader-admin></app-loader-admin>

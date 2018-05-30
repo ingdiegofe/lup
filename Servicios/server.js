@@ -24,15 +24,15 @@ server.register(require('hapi-auth-jwt-simple'), function (err){
     if(err){
       console.log("Error => " + err);
     }
-	
+
     server.auth.strategy('jwt', 'jwt', {
       validateFunc: md_auth.ensureAuth
     });
-	
+
     server.auth.default('jwt');
-	
+
     //Modulo de ADMINISTACION
-	
+
     var login = require('./recursos/AD/login')
     login.init(server, config);
 
@@ -41,14 +41,14 @@ server.register(require('hapi-auth-jwt-simple'), function (err){
 
     var persona = require('./recursos/AD/persona')
     persona.init(server, config);
-	
+
 	var prueba = require('./recursos/AD/prueba')
     prueba.init(server, config);
-	
-	
-	var admin_empresas = require('./recursos/AD/admin/admin_empresas');
+
+
+	var admin_empresas = require('./recursos/AD/admin_empresas');
 	admin_empresas.init(server, config);
-	
+
   	var email = require('./recursos/email')
   	email.init(server, config);
 

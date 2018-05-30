@@ -11,7 +11,7 @@ declare function DesplegarMensajeAdmin(strTipo, strMensaje): any;
 export class MantenimientoEmpresasComponent implements OnInit {
 
   empresas = [];
-  EmpresaABorrar;
+  EmpresaABorrar = { id_empresa: 0, nombre: "" };
   constructor(private _adminEmpresasService:AdminEmpresasService, private router: Router) { }
 
   ngOnInit() {
@@ -20,13 +20,14 @@ export class MantenimientoEmpresasComponent implements OnInit {
 
   VerModalBorrarEmpresa(Empresa){
     this.EmpresaABorrar = Empresa;
-    //$('#mdBorrarEmpresa').modal('show');
+    console.log(this.EmpresaABorrar);
+    $('#mdBorrarEmpresa').modal('show');
   }
 
   BorrarEmpresa(){
     this._adminEmpresasService.BorrarEmpresa({ idempresa: this.EmpresaABorrar.id_empresa })
 	  .subscribe(data=>{
-        //$('#mdBorrarEmpresa').modal('hide');
+        $('#mdBorrarEmpresa').modal('hide');
 		    if(data.code==1){
           DesplegarMensajeAdmin("Ok", data.message);
           this.ObtenerEmpresas();
@@ -37,7 +38,7 @@ export class MantenimientoEmpresasComponent implements OnInit {
   }
 
   IrAFormularioAgregar(){
-    this.router.navigate(['formE/agregar']);
+    this.router.navigate(['formE/agregar/0']);
   }
 
   IrAFormularioInformacion(Empresa){

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import * as $ from 'jquery';
+import * as bootstrap from "bootstrap";
 
 //Rutas
 import { APP_ROUTING } from './app.routes';

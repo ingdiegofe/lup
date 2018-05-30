@@ -1,20 +1,44 @@
 exports.init = function(server) {
 
-var dbManager = require('../../../BD/manager');
-var options = require('../../../BD/options');
-var funciones = require('../../../Funciones/funciones');
+var dbManager = require('../../BD/manager');
+var options = require('../../BD/options');
+var funciones = require('../../Funciones/funciones');
 var bcrypt = require('bcrypt-nodejs');
-var funciones = require('../../../Funciones/funciones');
+var funciones = require('../../Funciones/funciones');
 var Empresa;
 var Reply;
+
+// #########################################  LISTA CATEGORIAS EMPRESA  #########################################
+
+server.route({
+	method: 'GET',
+	path: '/admin-empresas/lista-categorias',
+	config: {
+	  auth: 'jwt',
+	  handler: ListaCategoriaEmpresa
+	}
+});
+
+function ListaCategoriaEmpresa(request, reply){
+	Reply = reply;
+	dbManager.show('id_categoria_empresa, nombre', 'ad_categoria_empresa', '1=1', '', cbListaCategoriaEmpresa);
+}
+
+function cbListaCategoriaEmpresa(result){
+	if(!result.success){
+		Reply({ code: 0, message: "Error obteniendo categorías de empresa" });
+	}else{
+		Reply({ code: 1, message: "Categorías de empresa obtenidas exitosamente", data: { body: result.data.rows } });
+	}
+}
 
 // #########################################  BORRAR EMPRESA  #########################################
 
 server.route({
 	method: 'POST',
-	path: '/admin-empresas/actualizar-empresa',
+	path: '/admin-empresas/borrar-empresa',
 	config: {
-	  auth: false,
+	  auth: 'jwt',
 	  handler: BorrarEmpresa
 	}
 });
@@ -39,7 +63,7 @@ server.route({
 	method: 'POST',
 	path: '/admin-empresas/actualizar-empresa',
 	config: {
-	  auth: false,
+	  auth: 'jwt',
 	  handler: ActualizarEmpresa
 	}
 });
@@ -62,11 +86,14 @@ function cbVerificarEmpresaRepetidaAct(result){
 		Reply({ code: 0, message: "Ya existe una empresa con el nuevo nombre ingresado" });
 	}else{
 		let strSQLSet = " nombre = '" + Empresa.nombre + "'";
+		strSQLSet += ", categoria = " + Empresa.categoria + " ";
 		// Adjuntar valores opcionales
 		if (funciones.validaParametro(Empresa.correo)) strSQLSet += ", correo = '" + Empresa.correo  + "'";
 		if (funciones.validaParametro(Empresa.telefono)) strSQLSet += ", telefono = '" + Empresa.telefono  + "'";
 		if (funciones.validaParametro(Empresa.direccion)) strSQLSet += ", direccion = '" + Empresa.direccion  + "'";
 		if (funciones.validaParametro(Empresa.url)) strSQLSet += ", url = '" + Empresa.url  + "'";
+		if (funciones.validaParametro(Empresa.nit)) strSQLSet += ", nit= '" + Empresa.nit + "'";
+		if (funciones.validaParametro(Empresa.representante_legal)) strSQLSet += ", representante_legal= '" + Empresa.representante_legal + "'";
 		// update(set, table, restriction, reply)
 		dbManager.update(strSQLSet, 'ad_empresa', "id_empresa = " + Empresa.id_empresa, cbActualizarEmpresa);
 	}
@@ -88,14 +115,14 @@ server.route({
 	method: 'POST',
 	path: '/admin-empresas/info-empresa',
 	config: {
-	  auth: false,
+	  auth: 'jwt',
 	  handler: InformacionEmpresa
 	}
 });
 
 function InformacionEmpresa(request, reply){
 	Reply = reply;
-	dbManager.show('id_empresa, nombre, correo, telefono, direccion, url',
+	dbManager.show('id_empresa, nombre, correo, telefono, direccion, url, nit, representante_legal, categoria ',
 		'ad_empresa', 'id_empresa = ' + request.payload.idempresa, '', cbInformacionEmpresa);
 }
 
@@ -116,7 +143,7 @@ server.route({
 	method: 'POST',
 	path: '/admin-empresas/agregar-empresa',
 	config: {
-	  auth: false,
+	  auth: 'jwt',
 	  handler: AgregarEmpresa
 	}
 });
@@ -148,8 +175,8 @@ function cbVerificarEmpresaRepetida(result){
 			reply({ code: 0, message: "Ya existe otra empresa con el nombre ingresado" });
 		}else{
 			// Armar campos para query de inserción
-			_strCampos += "nombre";
-			_strValores += "'" + Empresa.nombre + "'";
+			_strCampos += "nombre, categoria ";
+			_strValores += "'" + Empresa.nombre + "', " + Empresa.categoria ;
 			// Validar parametros opcionales
 			if (funciones.validaParametro(Empresa.correo)) {
 				_strCampos += ", correo";
@@ -166,6 +193,14 @@ function cbVerificarEmpresaRepetida(result){
 			if (funciones.validaParametro(Empresa.url)) {
 				_strCampos = _strCampos + ", url";
 				_strValores += ", '" + Empresa.url + "'";
+			}
+			if (funciones.validaParametro(Empresa.nit)){
+				_strCampos += ", nit";
+				_strValores += ", '" + Empresa.nit + "'";
+			}
+			if (funciones.validaParametro(Empresa.representante_legal)){
+				_strCampos += ", representante_legal";
+				_strValores += ", '" + Empresa.representante_legal + "'";
 			}
 			// Agregar campos de gestión internos
 			_strCampos += ", fecha_creacion, estado, fecha_modificacion, usuario_modifica";
@@ -191,7 +226,7 @@ server.route({
 	method: 'GET',
 	path: '/admin-empresas/lista-empresas',
 	config: {
-	  auth: false,
+	  auth: 'jwt',
 	  handler: ListaEmpresas
 	}
 });

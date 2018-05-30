@@ -8,5 +8,9 @@ create table ad_empresa(
 	fecha_creacion timestamp with time zone,
 	estado int,
 	fecha_modificacion timestamp with time zone,
-	usuario_modifica integer
+	usuario_modifica integer,
+	representante_legal varchar(100),
+	nit varchar(20),
+	categoria int not null,
+	FOREIGN KEY (categoria) REFERENCES ad_categoria_empresa(id_categoria_empresa)
 );
