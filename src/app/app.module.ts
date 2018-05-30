@@ -13,6 +13,7 @@ import { Globals } from './globals';
 import { LoginService } from './services/login/login.service';
 import { UsuarioService } from './services/usuario/usuario.service';
 import { AdminEmpresasService } from './services/admin/admin-empresas/admin-empresas.service';
+import { AdminUsuariosService } from './services/admin/admin-usuarios/admin-usuarios.service';
 
 import { AppComponent } from './app.component';
 import { NavbarInComponent } from './components/shared/navbar-in/navbar-in.component';
@@ -44,6 +45,7 @@ import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimient
 import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empresa/formulario-empresa.component';
 import { LoaderAdminComponent } from './components/shared/loader-admin/loader-admin.component';
 import { MensajeAdminComponent } from './components/shared/mensaje-admin/mensaje-admin.component';
+import { MantenimientoUsuariosComponent } from './components/AdmLup/mantenimiento-usuarios/mantenimiento-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +78,8 @@ import { MensajeAdminComponent } from './components/shared/mensaje-admin/mensaje
     MantenimientoEmpresasComponent,
     FormularioEmpresaComponent,
     LoaderAdminComponent,
-    MensajeAdminComponent
+    MensajeAdminComponent,
+    MantenimientoUsuariosComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,8 @@ import { MensajeAdminComponent } from './components/shared/mensaje-admin/mensaje
     Globals,
     LoginService,
     UsuarioService,
-	AdminEmpresasService
+	AdminEmpresasService,
+	AdminUsuariosService
   ],
   bootstrap: [AppComponent]
 })

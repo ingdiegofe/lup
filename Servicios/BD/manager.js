@@ -134,6 +134,7 @@ function Correr(query, reply) {
           success: false,
           data: null
         });
+		console.log(err.stack);
       } else {
         reply({
           success: true,

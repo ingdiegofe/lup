@@ -49,9 +49,11 @@ server.register(require('hapi-auth-jwt-simple'), function (err){
 	var admin_empresas = require('./recursos/AD/admin_empresas');
 	admin_empresas.init(server, config);
 
+	var admin_usuarios = require('./recursos/AD/admin_usuarios');
+	admin_usuarios.init(server, config);
+	
   	var email = require('./recursos/email')
   	email.init(server, config);
-
 
 
 });
