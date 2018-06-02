@@ -1,0 +1,60 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="admin-container">
+  <h3 class="h-admin">{{ Titulo }}</h3>
+  <br/>
+  <div style="text-align:center;">
+    <app-mensaje-admin></app-mensaje-admin>
+  </div>
+  <div class="">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-3">
+          <label>Id usuario:</label>
+          <input type="text" class="form-control" placeholder="Id usuario" maxlength="200" [(ngModel)]="Usuario.id_usuario" [disabled]="Operacion!='agregar'">
+        </div>
+        <div class="col-3">
+          <label>Nombre usuario:</label>
+          <input type="text" class="form-control" placeholder="Nombre usuario" maxlength="200" [(ngModel)]="Usuario.nombre" [disabled]="Operacion=='informacion'">
+        </div>
+      </div>
+      <br/>
+      <div class="row" *ngIf="Operacion!='agregar'">
+        <div class="col-3">
+          <label>Fecha creación:</label>
+          <input type="text" class="form-control" placeholder="Fecha creación" maxlength="50" [(ngModel)]="Usuario.fecha_creacion" [disabled]="1==1">
+        </div>
+        <div class="col-3">
+          <label>Fecha ingreso:</label>
+          <input type="text" class="form-control" placeholder="Fecha ingreso" maxlength="50" [(ngModel)]="Usuario.fecha_ingreso" [disabled]="1==1">
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-3">
+          <div *ngIf="roles">
+            <label>Rol:</label>
+            <select class="form-control" [(ngModel)]="Usuario.rol" [disabled]="Operacion=='informacion'">
+              <option *ngFor="let rol of roles" [ngValue]="rol.id_rol">{{ rol.nombre }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-3">
+          <label>Logueado:</label>
+
+
+        </div>
+      </div>
+      <br/>
+      <div *ngIf="Operacion == 'agregar'">
+        <button class="btn btn-sm btn-admin-lup">Guardar</button>
+      </div>
+      <div *ngIf="Operacion == 'modificar'">
+        <button class="btn btn-sm btn-admin-lup">Modificar</button>
+      </div>
+      <button class="btn btn-sm btn-link" onclick=" window.location = '#/mantU'; ">Regresar</button>
+    </div>
+  </div>
+</div>
+<div style="text-align: center;">
+  <app-loader-admin></app-loader-admin>
+</div>

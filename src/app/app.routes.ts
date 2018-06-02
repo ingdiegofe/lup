@@ -16,7 +16,7 @@ import { HomelComponent } from './components/AdmLup/homel/homel.component';
 import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimiento-empresas/mantenimiento-empresas.component';
 import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empresa/formulario-empresa.component';
 import { MantenimientoUsuariosComponent } from './components/AdmLup/mantenimiento-usuarios/mantenimiento-usuarios.component';
-
+import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuario/formulario-usuario.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -36,6 +36,7 @@ const APP_ROUTES: Routes = [
   { path: 'mantE', component: MantenimientoEmpresasComponent },
   { path: 'formE/:operacion/:idempresa', component: FormularioEmpresaComponent },
   { path: 'mantU', component: MantenimientoUsuariosComponent },
+  { path: 'formU/:operacion/:idusuario', component: FormularioUsuarioComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

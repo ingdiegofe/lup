@@ -46,6 +46,7 @@ import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empre
 import { LoaderAdminComponent } from './components/shared/loader-admin/loader-admin.component';
 import { MensajeAdminComponent } from './components/shared/mensaje-admin/mensaje-admin.component';
 import { MantenimientoUsuariosComponent } from './components/AdmLup/mantenimiento-usuarios/mantenimiento-usuarios.component';
+import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuario/formulario-usuario.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { MantenimientoUsuariosComponent } from './components/AdmLup/mantenimient
     FormularioEmpresaComponent,
     LoaderAdminComponent,
     MensajeAdminComponent,
-    MantenimientoUsuariosComponent
+    MantenimientoUsuariosComponent,
+    FormularioUsuarioComponent
   ],
   imports: [
     BrowserModule,
