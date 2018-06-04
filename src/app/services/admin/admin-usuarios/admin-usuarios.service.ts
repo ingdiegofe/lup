@@ -10,6 +10,20 @@ export class AdminUsuariosService {
 
   constructor(private http: Http, private globals: Globals) { }
 
+
+  InfoUsuario(idusuario){
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+    let postUrl = this.url + '/info-usuario';
+
+    return this.http.post(postUrl, idusuario, { headers: headers })
+    .map(res => {
+      console.log(res.json());
+      return res.json();
+    });
+  }
+
+
   ListaRoles(){
     let token = localStorage.getItem('token');
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': token });

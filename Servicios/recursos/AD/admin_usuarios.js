@@ -8,6 +8,41 @@ var funciones = require('../../Funciones/funciones');
 var Usuario;
 var Reply;
 
+// #########################################  INFORMACION DE USUARIO  #########################################
+
+server.route({
+	method: 'POST',
+	path: '/admin-usuarios/info-usuario',
+	config: {
+	  auth: 'jwt',
+	  handler: InformacionUsuario
+	}
+});
+
+function InformacionUsuario(request, reply){
+	Reply = reply;
+	_strSQL = 	"SELECT 	id_usuario, nombre,  " +
+		"CASE	  WHEN estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, fecha_modificacion, " +
+		"CASE  	WHEN logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, id_rol::int, " +
+		"fecha_creacion, fecha_ingreso " +
+		"FROM 	ad_usuario " +
+		"WHERE	id_usuario = " + request.payload.idusuario;
+
+		dbManager.Correr(_strSQL, cbInformacionUsuario);
+}
+
+function cbInformacionUsuario(result){
+	if (!result.success) {
+		console.log(result.err);
+		Reply({ code: 0, message: "Error obteniendo información de usuario" });
+	} else {
+		console.log("Nombre usuario => " + result.data.rows[0].nombre);
+		Reply({ code: 1, message: "Información obtenida exitosamente", body: { usuario: result.data.rows } });
+	}
+}
+
+
+
 // #########################################  LISTA DE ROLES  #########################################
 
 server.route({
