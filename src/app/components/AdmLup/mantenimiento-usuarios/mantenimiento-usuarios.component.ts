@@ -11,14 +11,17 @@ declare function DesplegarMensajeAdmin(strTipo, strMensaje): any;
 export class MantenimientoUsuariosComponent implements OnInit {
 
   usuarios = [];
-  
+
   constructor(private _adminUsuariosService:AdminUsuariosService, private router: Router) { }
 
   ngOnInit() {
     this.ObtenerUsuarios();
   }
 
-
+  IrAFormularioUsuario(Usuario){
+    console.log(Usuario);
+    this.router.navigate(['formU/informacion/' + Usuario.id_usuario ]);
+  }
 
   ObtenerUsuarios()
   {

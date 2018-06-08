@@ -40,6 +40,10 @@
 		text-align: center;
 	}
 
+.td-admin-opciones {
+		font-size: 16px;
+}
+
 .btn-admin-lup {
   background-color: #2E4053;
   color: white;
