@@ -31,8 +31,10 @@
       <div class="col-sm-6">
          <h4 class="text-primary">Historia</h4>
 
-         <p class="text-justify">Somos el Centro de diagnóstico clínico en Guatemala que durante más de 38 años ha manejado con responsabilidad, confianza, calidad en las pruebas realizadas y seriedad de la información confidencial con profesionalismo en el área de servicios de diagnóstico de la salud a la población guatemalteca, ofreciendo  personal capacitado, comprometido en ofrecer la mejor atención y experiencia al paciente.</p>
-         <p class="text-justify">Fundados en el año 1979 por el Dr. José Roberto Amezquita López, con el correr del tiempo y una visión clara de constante innovación Laboratorio Santa Bertilda llega a ser catalogado como “Centro de diagnóstico clínico y por imágenes Santa Bertilda” diversificando así los servicios que brinda en el diagnóstico de la salud. Hoy más 38años después de su fundación continuamos impulsados por los mismos principios y valores con los que inicio nuestro fundador.</p>
+         <p class="text-justify">
+            {{ strHistoria }}
+         </p>
+        
 
         <hr class="my-4">
          <h4 class="text-primary">Lema</h4>
@@ -55,12 +57,10 @@
         <div class="card mb-3 ">
 
           <div class="card-body text-dark">
-            <h4 class="card-title">Visión</h4>
-            <p class="lead card-text text-justify">Define el objetivo de Coca-Cola a largo plazo como empresa, y es el criterio de peso de sus actuaciones y de las decisiones que toma para lograr tres metas fundamentales:
-
-Refrescar al mundo.
-Inspirar momentos de optimismo y felicidad.
-Crear valor y marcar la diferencia.</p>
+            <h4 class="card-title"><strong>Visión</strong></h4>
+            <p class="lead card-text text-justify">
+              {{ strVision }}
+            </p>
           </div>
         </div>
 
@@ -68,14 +68,10 @@ Crear valor y marcar la diferencia.</p>
 
         <div class="card  mb-3 ">
           <div class="card-body text-dark">
-            <h4 class="card-title">Misión</h4>
-            <p class="lead card-text text-justify">Es el marco del plan de trabajo y describe lo que se necesita lograr para conseguir la máxima sostenibilidad, calidad y crecimiento. Con ella, se pretenden alcanzar unos objetivos adaptados a diferentes ámbitos:
-Personas: Ser un buen lugar donde trabajar, que las personas se sientan inspiradas para dar cada día lo mejor de sí mismas.
-Bebidas: Ofrecer una variada cartera de productos de calidad que se anticipen y satisfagan los deseos y necesidades de los consumidores.
-Socios: Desarrollar una red de trabajo para crear un valor común y duradero.
-Planeta: Ser un ciudadano responsable que marque la diferencia al ayudar a construir y apoyar comunidades sostenibles.
-Beneficio: Maximizar el rendimiento para los accionistas al tiempo que se tienen presentes las responsabilidades generales de la compañía.
-Productividad: Ser una organización eficaz y dinámica.</p>
+            <h4 class="card-title"><strong>Misión</strong></h4>
+            <p class="lead card-text text-justify">
+              {{ strMision }}
+            </p>
           </div>
         </div>
 
@@ -85,15 +81,9 @@ Productividad: Ser una organización eficaz y dinámica.</p>
       <div class="col-sm-6">
         <div class="card mb-3 ">
           <div class="card-body text-dark">
-            <h4 class="card-title">Valores:</h4><br>
+            <h4 class="card-title"><strong>Valores:</strong></h4><br>
             <ul class="lead card-text">
-              <li>Liderazgo: esforzarse en dar forma a un futuro mejor.</li>
-              <li>Colaboración: potenciar el talento colectivo.</li>
-              <li>Integridad: ser transparentes.</li>
-              <li>Rendir cuentas: ser responsables.</li>
-              <li>Pasión: estar comprometidos con el corazón y con la mente.</li>
-              <li>Diversidad: contar con un amplio abanico de marcas y ser tan inclusivos como ellas.</li>
-              <li>Calidad: búsqueda de la excelencia.</li>
+              {{ strValores }}
             </ul>
           </div>
         </div>

@@ -12,8 +12,12 @@ import { APP_ROUTING } from './app.routes';
 import { Globals } from './globals';
 import { LoginService } from './services/login/login.service';
 import { UsuarioService } from './services/usuario/usuario.service';
+import { EmailService } from './services/email/email.service';
+import { PaisService } from './services/pais/pais.service';
+import { PersonaService } from './services/persona/persona.service';
 import { AdminEmpresasService } from './services/admin/admin-empresas/admin-empresas.service';
 import { AdminUsuariosService } from './services/admin/admin-usuarios/admin-usuarios.service';
+
 
 import { AppComponent } from './app.component';
 import { NavbarInComponent } from './components/shared/navbar-in/navbar-in.component';
@@ -94,8 +98,11 @@ import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuar
     Globals,
     LoginService,
     UsuarioService,
-	AdminEmpresasService,
-	AdminUsuariosService
+    EmailService,
+    PaisService,
+    PersonaService,
+    AdminEmpresasService,
+    AdminUsuariosService
   ],
   bootstrap: [AppComponent]
 })

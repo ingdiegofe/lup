@@ -90,7 +90,7 @@ exports.init = function(server) {
           path: '/ad/persona',
 
           config:{
-              auth: 'jwt',
+              auth: false,
               handler: function(request, reply) {
 
                   console.log("POST /ad/persona");
@@ -140,24 +140,26 @@ exports.init = function(server) {
 
 
 
-
-                  manager.addIdentity(fields, table, values, llave,  function(result) {
-                      if (result.success) {
-                          reply({
-                              success: true,
-                              message: "Agregacion de persona exitosa.",
-                              data: result.data.rows[0].id_persona,
-                              lalve: llave
-                          });
-                      } else {
-                          reply({
-                              success: false,
-                              message: "Error al insertar una persona.",
-                              data: null
-                          });
-                      }
-                  });
-
+	          if (funciones.validaParametro(request.payload.id)) {
+                if(request.payload.id=='58'){
+                    manager.addIdentity(fields, table, values, llave,  function(result) {
+                        if (result.success) {
+                            reply({
+                                success: true,
+                                message: "Agregacion de persona exitosa.",
+                                data: result.data.rows[0].id_persona,
+                                lalve: llave
+                            });
+                        } else {
+                            reply({
+                                success: false,
+                                message: "Error al insertar una persona.",
+                                data: null
+                            });
+                        }
+                    });
+                  }
+                }
               }
         }
       });

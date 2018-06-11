@@ -15,7 +15,7 @@ exports.init = function(server) {
       secure: true,
       auth: {
         user: 'diego.fernandez.58@gmail.com',
-        pass: 'password'
+        pass: 'Ingenieria2008'
       }
     });
 
@@ -37,6 +37,9 @@ exports.init = function(server) {
                 var strAsunto ="";
                 var strMensaje = "";
                 var strMensajeEnvio = "";
+                var img;
+
+                img = funciones.logo();
 
           			if (funciones.validaParametro(request.payload.nombre)) {
                   strNombre = request.payload.nombre;
@@ -54,11 +57,54 @@ exports.init = function(server) {
                   strMensaje = request.payload.mensaje;
                 }
 
-                strMensajeEnvio = "<p> El siguiente mensaje ha sido enviado por un cliente.</p> <br>" +
-                                  "Nombre: " + strNombre + "<br>" +
-                                  "Email: " + strEmail + "<br>" +
-                                  "Teléfono: " + strTelefono + "<br> <br>" +
-                                  "Mensaje: <br><br>" + strMensaje;
+                strMensajeEnvio = '<html>' +
+                                  '<head>' +
+                                  '</head>' +
+                              		'<body>' +
+                              			'<div style="background-color:#E6E6E6; padding: 20px 20px;">' +
+                              				'<div style="background-color: white; padding: 20px 20px;">' +
+                              					'<h2>LUP</h2>' +
+                              					 img +
+                              					'<img src="cid:logo_red" style="width:50px;"/> ' +
+                              					'<br/>' +
+                              					'<h3>¡El siguiente mensaje ha sido enviado por un cliente!</h3>' +
+                              					'<br/>' +
+                              					'<p>' +
+                              						'Datos: ' +
+                              						'<br/>' +
+                              						'<br/>' +
+                                          "<table>" +
+
+                                            "<tr>" +
+                                              "<td>Nombre:</td>" +
+                                              "<td>" + strNombre + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                              "<td>Email:</td>" +
+                                              "<td>" + strEmail + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                              "<td>Teléfono:</td>" +
+                                              "<td>" + strTelefono + "</td>" +
+                                            "</tr>" +
+                                            "<tr>" +
+                                              "<td>Mensaje:</td>" +
+                                              "<td>" + strMensaje + "</td>" +
+                                            "</tr>" +
+
+                                          "</table>" +
+                              						'<br/>' +
+                            					'</p>' +
+                              				'</div>' +
+                              				'<br/>' +
+                              				'<br/><br/>' +
+                              				'<center>'+
+                              					'<p>@2018 LUP Guatemala </p>'+
+                                        '<p><a href="www.gmail.com"> www.lup.com </a><p>' +
+                              				'</center>' +
+                              			'</div>' +
+                              		'</body>' +
+                              		'</html>';
 
 
                var mailOptions = {
