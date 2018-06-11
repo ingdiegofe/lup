@@ -10,6 +10,7 @@ export class Globals{
   UsuarioR:string;
   Persona:string;
   MantEmpresas: string;
+  MantUsuarios: string;
 
   //LUP
   vision:string;

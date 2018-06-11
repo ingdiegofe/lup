@@ -7,6 +7,7 @@ import 'rxjs/Rx';
 export class UsuarioService {
 
   url:string = this.globals.Usuario;
+ urlr:string = this.globals.UsuarioR;
 
   constructor(private http:Http,
                private globals:Globals) { }
@@ -34,6 +35,24 @@ export class UsuarioService {
          });
      }
 
+     getUsuarioRegistro(nombre:string){
+
+       let headers = new Headers({
+         'Content-Type':'application/x-www-form-urlencoded'
+       });
+
+       let body = "?&nombre="+ nombre;
+
+       let getUrl = this.urlr + body;
+
+      // console.log("BODY: "+  body)
+
+       return this.http.get(getUrl, { headers:headers })
+         .map( res =>{
+           console.log(res.json());
+           return res.json();
+         });
+     }
 
      postUsuario( Authorization:string, nombre:string, id_persona:string,id_rol:string){
 
@@ -76,6 +95,24 @@ export class UsuarioService {
 
 
        return this.http.put( this.url, body, { headers:headers } )
+         .map(res=>{
+           console.log(res.json());
+           return res.json();
+         })
+
+     }
+
+     postUsuarioR(  nombre:string, id_persona:string,id_rol:string){
+
+       let headers = new Headers({
+         'Content-Type':'application/x-www-form-urlencoded'
+       });
+
+       let body= '&nombre='+ nombre +
+                 '&id_persona=' + id_persona +
+                 '&id_rol='+ id_rol;
+
+       return this.http.post( this.url, body, { headers:headers } )
          .map(res=>{
            console.log(res.json());
            return res.json();
