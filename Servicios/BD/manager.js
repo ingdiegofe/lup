@@ -1,77 +1,53 @@
 var pg = require('pg');
+var bitacora = require('../Funciones/bitacora');
 //var connect = "PostgreSQL://postgres:pruebas@127.0.0.1/postgres";
 var connect = "PostgreSQL://postgres:fernandez@45.63.11.179/LUP";
 
 function testConnection(reply) {
   pg.connect(connect, function(err, client, done) {
     if (err) {
-      reply({
-        success: false,
-        message: err.stack
-      });
+      bitacora.error(err.stack);
+      reply({ success: false,  message: err.stack });
     } else {
-      reply({
-        success: true,
-        message: "Connected successfully"
-      });
+      reply({ success: true, message: "Connected successfully" });
     }
   });
 }
 
 function show(fields, table, restriction, order, reply) {
-
   var query = "";
-
   pg.connect(connect, function(err, client, done) {
     if (fields != "") {
       query = query + " SELECT " + fields;
       if (table != "") {
         query = query + " FROM " + table;
-        if (restriction != "") {
-          query = query + " WHERE " + restriction;
-        }
+        if (restriction != "")  query = query + " WHERE " + restriction;
         if (order != "") {
           query = query + " ORDER BY " + order;
         } else {
           query = query + " ORDER BY 1";
         }
-
-        console.log("QUERY: " + query);
       } else {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
       }
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-    //console.log("tag error query " + query);
+    bitacora.dblog(query);
     client.query(query, function(err, result) {
       done();
       if (err) {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
-
     });
   });
 }
 
 function showNoOrder(fields, table, restriction, reply) {
-
   var query = "";
-
   pg.connect(connect, function(err, client, done) {
     if (fields != "") {
       query = query + " SELECT " + fields;
@@ -80,32 +56,20 @@ function showNoOrder(fields, table, restriction, reply) {
         if (restriction != "") {
           query = query + " WHERE " + restriction;
         }
-
       } else {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
       }
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-
+    bitacora.dblog(query);
     client.query(query, function(err, result) {
       done();
       if (err) {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
 
     });
@@ -113,82 +77,47 @@ function showNoOrder(fields, table, restriction, reply) {
 }
 
 function Correr(query, reply) {
-
-
+  bitacora.dblog(query);
   pg.connect(connect, function(err, client, done) {
     if (query != "") {
-
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-
-    console.log(query);
-
     client.query(query, function(err, result) {
       done();
       if (err) {
-        reply({
-          success: false,
-          data: null
-        });
-		console.log(err.stack);
+        reply({ success: false, data: null });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
-
     });
   });
 }
 
 function addIdentity(fields, table, values, llave, reply) {
-
   var query = "";
-
   pg.connect(connect, function(err, client, done) {
     if (table != "") {
       query = query + " INSERT INTO " + table;
       if (fields != "") {
         query = query + "(" + fields + ")";
-        if (values != "") {
-          query = query + "VALUES(" + values + ")";
-        }
-        if (llave != "") {
-          query = query + " returning " + llave
-        }
-
-        console.log("QEURY ID:" + query);
-
+        if (values != "") query = query + "VALUES(" + values + ")";
+        if (llave != "")  query = query + " returning " + llave
       } else {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
       }
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-
+    bitacora.dblog(query);
     client.query(query, function(err, result) {
       done();
       if (err) {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
 
     });
@@ -197,57 +126,34 @@ function addIdentity(fields, table, values, llave, reply) {
 }
 
 function add(fields, table, values, reply) {
-
   var query = "";
-
-  //console.log(table);
-
   pg.connect(connect, function(err, client, done) {
     if (table != "") {
       query = query + " INSERT INTO " + table;
       if (fields != "") {
         query = query + "(" + fields + ")";
-        if (values != "") {
-          query = query + "VALUES(" + values + ")";
-        }
+        if (values != "") query = query + "VALUES(" + values + ")";
       } else {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
       }
-
-      console.log(query);
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-
+    bitacora.dblog(query);
     client.query(query, function(err, result) {
       done();
       if (err) {
-        reply({
-          success: false,
-          data: null,
-          err: err.stack
-        });
+        reply({ success: false, data: null, err: err.stack });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
-
     });
   });
 }
 
 function update(set, table, restriction, reply) {
-
   var query = "";
-
   pg.connect(connect, function(err, client, done) {
     if (table != "") {
       query = query + " UPDATE " + table;
@@ -256,89 +162,55 @@ function update(set, table, restriction, reply) {
         if (restriction != "") {
           query = query + " WHERE " + restriction;
         } else {
-          reply({
-            success: false,
-            data: null
-          });
+          reply({ success: false, data: null });
         }
-        console.log(query);
       } else {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
       }
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-
+    bitacora.dblog(query);
     client.query(query, function(err, result) {
       done();
       if (err) {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
-
     });
   });
 }
 
 function remove(table, restriction, reply) {
-
   var query = "";
-
   pg.connect(connect, function(err, client, done) {
     if (table != "") {
       query = query + " DELETE FROM " + table;
       if (restriction != "") {
         query = query + " WHERE " + restriction;
-
       } else {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
       }
-      console.log("DELETE" + query);
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-
+    bitacora.dblog(query);
     client.query(query, function(err, result) {
       done();
       if (err) {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
-
     });
   });
 }
 
 function addSelect(fields, table, values, reply) {
-
   var query = "";
-
   pg.connect(connect, function(err, client, done) {
     if (table != "") {
       query = query + " INSERT INTO " + table;
@@ -348,38 +220,24 @@ function addSelect(fields, table, values, reply) {
           query = query + "(" + values + ")";
         } else {
           reply({
-            success: false,
-            data: null
-          });
+            success: false, data: null });
         }
       } else {
         reply({
-          success: false,
-          data: null
-        });
+          success: false, data: null });
       }
     } else {
-      reply({
-        success: false,
-        data: null
-      });
+      reply({ success: false, data: null });
     }
-    console.log(query);
+    bitacora.dblog(query);
     client.query(query, function(err, result) {
       done();
-      console.log(err)
       if (err) {
-        reply({
-          success: false,
-          data: null
-        });
+        reply({ success: false, data: null });
+        db.error(err.stack);
       } else {
-        reply({
-          success: true,
-          data: result
-        });
+        reply({ success: true, data: result });
       }
-
     });
   });
 }

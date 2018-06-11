@@ -233,7 +233,7 @@ server.route({
 
 function ListaEmpresas(request, reply) {
 	Reply = reply;
-	_strSQL = 	"SELECT E.id_empresa, E.nombre, E.fecha_modificacion, U.nombre AS usuario_modifica " +
+	_strSQL = 	"SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica " +
 				"FROM ad_empresa E, ad_usuario U " +
 				"WHERE E.usuario_modifica = U.id_usuario ";
 	dbManager.Correr(_strSQL, cbListaEmpresas);

@@ -18,6 +18,10 @@ export class MantenimientoUsuariosComponent implements OnInit {
     this.ObtenerUsuarios();
   }
 
+  IrAAgregarUsuario(){
+    this.router.navigate(['formU/agregar/0']);
+  }
+
   IrAFormularioUsuario(Usuario){
     console.log(Usuario);
     this.router.navigate(['formU/informacion/' + Usuario.id_usuario ]);

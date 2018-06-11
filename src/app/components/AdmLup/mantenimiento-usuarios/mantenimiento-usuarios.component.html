@@ -5,7 +5,7 @@
 	<div style="text-align:center;">
 		<app-mensaje-admin></app-mensaje-admin>
 		<br/>
-		<button class="btn btn-sm btn-admin-lup" >Agregar usuario</button>
+		<button class="btn btn-sm btn-admin-lup" (click)="IrAAgregarUsuario()">Agregar usuario</button>
 	</div>
 	<br/>
 	<div *ngIf="usuarios.length">

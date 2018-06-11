@@ -18,6 +18,8 @@
   "dependencies": {
     "bcrypt": "^1.0.3",
     "bcrypt-nodejs": "0.0.3",
+    "date-format": "^1.2.0",
+    "dateformat": "^3.0.3",
     "hapi": "^15.0.3",
     "hapi-auth-jwt-simple": "^1.0.0",
     "hapi-cors-headers": "^1.0.0",

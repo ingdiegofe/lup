@@ -8,9 +8,9 @@
   <div class="" style="max-width:700px;">
     <div class="form-group">
       <div class="row">
-        <div class="col-3">
+        <div class="col-3" *ngIf="Operacion!='agregar'">
           <label>Id:</label>
-          <input type="text" class="form-control" placeholder="Id usuario" maxlength="200" [(ngModel)]="Usuario.id_usuario" [disabled]="Operacion!='agregar'">
+          <input type="text" class="form-control" placeholder="Id usuario" maxlength="200" [(ngModel)]="Usuario.id_usuario" disabled>
         </div>
         <div class="col-6">
           <label>Nombre usuario:</label>
@@ -19,7 +19,7 @@
       </div>
       <br/>
       <div class="row">
-        <div class="col-3">
+        <div class="col-3" *ngIf="Operacion!='agregar'">
           <label>Estado:</label>
           <input type="text" class="form-control" placeholder="Estado" maxlength="10" [(ngModel)]="Usuario.estado" [disabled]="Operacion=='informacion'">
         </div>
