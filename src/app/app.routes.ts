@@ -17,6 +17,8 @@ import { MantenimientoEmpresasComponent } from './components/AdmLup/mantenimient
 import { FormularioEmpresaComponent } from './components/AdmLup/formulario-empresa/formulario-empresa.component';
 import { MantenimientoUsuariosComponent } from './components/AdmLup/mantenimiento-usuarios/mantenimiento-usuarios.component';
 import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuario/formulario-usuario.component';
+import { MantenimientoPersonasComponent } from './components/AdmLup/mantenimiento-personas/mantenimiento-personas.component';
+import { FormularioPersonaComponent } from './components/AdmLup/formulario-persona/formulario-persona.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -37,6 +39,8 @@ const APP_ROUTES: Routes = [
   { path: 'formE/:operacion/:idempresa', component: FormularioEmpresaComponent },
   { path: 'mantU', component: MantenimientoUsuariosComponent },
   { path: 'formU/:operacion/:idusuario', component: FormularioUsuarioComponent },
+  { path: 'mantP', component: MantenimientoPersonasComponent },
+  { path: 'formP/:operacion/:idpersona', component: FormularioPersonaComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

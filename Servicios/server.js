@@ -4,62 +4,67 @@ var md_auth = require('./middlewares/authenticated');
 
 
 var config = {
-    server: {
-        host: '127.0.0.1',
-        port: 3010
-    }
+  server: {
+    host: '127.0.0.1',
+    port: 3010
+  }
 }
 
 var server = new hapi.Server();
 server.connection({
-    host: config.server.host,
-    port: config.server.port
+  host: config.server.host,
+  port: config.server.port
 });
 
 
 
 
-server.register(require('hapi-auth-jwt-simple'), function (err){
+server.register(require('hapi-auth-jwt-simple'), function(err) {
 
-    if(err){
-      console.log("Error => " + err);
-    }
+  if (err) {
+    console.log("Error => " + err);
+  }
 
-    server.auth.strategy('jwt', 'jwt', {
-      validateFunc: md_auth.ensureAuth
-    });
+  server.auth.strategy('jwt', 'jwt', {
+    validateFunc: md_auth.ensureAuth
+  });
 
-    server.auth.default('jwt');
+  server.auth.default('jwt');
 
-    //Modulo de ADMINISTACION
+  //Modulo de ADMINISTACION
 
-    var login = require('./recursos/AD/login')
-    login.init(server, config);
+  var login = require('./recursos/AD/login')
+  login.init(server, config);
 
-    var usuario = require('./recursos/AD/usuario')
-    usuario.init(server, config);
+  var usuario = require('./recursos/AD/usuario')
+  usuario.init(server, config);
 
-    var persona = require('./recursos/AD/persona')
-    persona.init(server, config);
+  var persona = require('./recursos/AD/persona')
+  persona.init(server, config);
 
-	var prueba = require('./recursos/AD/prueba')
-    prueba.init(server, config);
+  var prueba = require('./recursos/AD/prueba')
+  prueba.init(server, config);
 
+  var pais = require('./recursos/AD/pais')
+  pais.init(server, config);
 
-	var admin_empresas = require('./recursos/AD/admin_empresas');
-	admin_empresas.init(server, config);
+  var admin_empresas = require('./recursos/AD/admin_empresas');
+  admin_empresas.init(server, config);
 
-	var admin_usuarios = require('./recursos/AD/admin_usuarios');
-	admin_usuarios.init(server, config);
-	
-  	var email = require('./recursos/email')
-  	email.init(server, config);
+  var admin_usuarios = require('./recursos/AD/admin_usuarios');
+  admin_usuarios.init(server, config);
+
+  var admin_personas = require('./recursos/AD/admin_personas');
+  admin_personas.init(server, config);
+
+  var email = require('./recursos/email')
+  email.init(server, config);
 
 
 });
 
 server.ext('onPreResponse', corsHeaders);
 
-server.start(function(){
-    console.log("Servidor Ejecutandose en:", server.info.uri)
+server.start(function() {
+  console.log("Servidor Ejecutandose en:", server.info.uri)
 });

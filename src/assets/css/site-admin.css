@@ -4,7 +4,7 @@
 }
 
 .admin-form-container {
-	max-width:500px;
+	max-width: 800px;
 }
 
 .h-admin {
@@ -25,8 +25,9 @@
 }
 
 .table-admin {
-  width: 100%;
+  width: 80%;
   font-size: 12px;
+	min-width:800px;
 }
 
 	.table-admin tr th{

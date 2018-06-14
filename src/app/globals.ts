@@ -11,6 +11,7 @@ export class Globals{
   Persona:string;
   MantEmpresas: string;
   MantUsuarios: string;
+  MantPersonas: string;
 
   //LUP
   vision:string;
@@ -29,41 +30,42 @@ export class Globals{
     this.Email = this.url + "/correo";
     this.MantEmpresas = this.url + "/admin-empresas";
     this.MantUsuarios = this.url + "/admin-usuarios";
+    this.MantPersonas = this.url + "/admin-personas";
 
 
 
     this.vision = "Ser el principal motor del \
-                  mercado económico a nivel mundial, impulsando al emprendedor  \
-                  de pequeña y mediana empresa a cumplir sus sueños y propósitos \
+                  mercado econï¿½mico a nivel mundial, impulsando al emprendedor  \
+                  de pequeï¿½a y mediana empresa a cumplir sus sueï¿½os y propï¿½sitos \
                    con ayuda colectiva."
 
 
-    this.mision = "Crear el impulso financiero mediante puentes económicos. \
-                  Ofreciendo herramientas tecnológicas para inversionistas y empresas."
+    this.mision = "Crear el impulso financiero mediante puentes econï¿½micos. \
+                  Ofreciendo herramientas tecnolï¿½gicas para inversionistas y empresas."
 
-    this.valores = "Trabajamos mediante valores y una ética moral que nos permite  " +
+    this.valores = "Trabajamos mediante valores y una ï¿½tica moral que nos permite  " +
                   "tener la confianza de nuestros socios, accionistas e inversionistas " +
                   "como podemos mencionar algunos pilares de nuestra entidad: <br> " +
-                  "<li> SERVICIOS DE INFORMACIÓN GLOBAL y TENDENCIAS MACRO Y MICRO ECONOMICAS. <\li>" +
+                  "<li> SERVICIOS DE INFORMACIï¿½N GLOBAL y TENDENCIAS MACRO Y MICRO ECONOMICAS. <\li>" +
                   "<li> SOLUCIONES CORPORATIVAS<\li> " +
                   "<li> ASESORIAS ESTRATEGICAS <\li>" +
                   "<li> APORTE TECNOLOGICO <\li> " +
-                  "<li> INNOVACIÓN <\li> " +
+                  "<li> INNOVACIï¿½N <\li> " +
                   "<li> HONESTIDAD <\li> " +
                   "<li> JUSTICIA <\li>";
 
 
-    this.historia = "LUP ® es una entidad creada para ser el laso, conexión y  \
-                    puente financiero entre el inversionista y la pequeña y mediana empresa.  \
+    this.historia = "LUPï¿½ï¿½ es una entidad creada para ser el laso, conexiï¿½n y  \
+                    puente financiero entre el inversionista y la pequeï¿½a y mediana empresa.  \
                     Nuestros principales aliados son los emprendedores que buscan \
-                    cambiar la dirección del país, mediante la creación de nuevos \
+                    cambiar la direcciï¿½n del paï¿½s, mediante la creaciï¿½n de nuevos \
                     puestos de trabajo e iniciativas relevantes que den una mayor \
-                    generación de frutos económicamente sostenibles en el tiempo. \
+                    generaciï¿½n de frutos econï¿½micamente sostenibles en el tiempo. \
                     INVERSIONITAS: \
-                    Nuestro principal objetivo es dar al socio inversionista una amplia gama de oportunidades de inversión y asesoría empresarial para generar una sana inversión que perdure mediante valiosa información para una toma de decisiones con riesgo calculado.\
+                    Nuestro principal objetivo es dar al socio inversionista una amplia gama de oportunidades de inversiï¿½n y asesorï¿½a empresarial para generar una sana inversiï¿½n que perdure mediante valiosa informaciï¿½n para una toma de decisiones con riesgo calculado.\
                     Empresas cotizadas: \
-                    Buscamos empresas con un valor agregado en el mercado, con ideas retadoras y deseo de éxito total.  \
-                    Mediante un análisis por profesionales en la materia; nuestro mayor deseo es hacer que los sueños de aquellos empresarios-emprendedores sean realidad. "
+                    Buscamos empresas con un valor agregado en el mercado, con ideas retadoras y deseo de ï¿½xito total.  \
+                    Mediante un anï¿½lisis por profesionales en la materia; nuestro mayor deseo es hacer que los sueï¿½os de aquellos empresarios-emprendedores sean realidad. "
 
   }
 }

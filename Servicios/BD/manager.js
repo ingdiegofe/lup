@@ -144,7 +144,8 @@ function add(fields, table, values, reply) {
       done();
       if (err) {
         reply({ success: false, data: null, err: err.stack });
-        db.error(err.stack);
+        console.log(err.stack);
+        bitacora.error(err.stack);
       } else {
         reply({ success: true, data: result });
       }

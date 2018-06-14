@@ -4,11 +4,11 @@
 	<br/>
 	<div style="text-align:center;">
 		<app-mensaje-admin></app-mensaje-admin>
-		<br/>
-		<button class="btn btn-sm btn-admin-lup" (click)="IrAFormularioAgregar()">Agregar empresa</button>
 	</div>
+	<button class="btn btn-sm btn-admin-lup" (click)="IrAFormularioAgregar()">Agregar empresa</button>
 	<br/>
-	<div *ngIf="empresas.length">
+	<br/>
+	<div *ngIf="empresas.length" class="admin-form-container">
 		<table class="table table-striped table-admin">
 			<thead>
 				<tr>

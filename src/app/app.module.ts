@@ -17,7 +17,7 @@ import { PaisService } from './services/pais/pais.service';
 import { PersonaService } from './services/persona/persona.service';
 import { AdminEmpresasService } from './services/admin/admin-empresas/admin-empresas.service';
 import { AdminUsuariosService } from './services/admin/admin-usuarios/admin-usuarios.service';
-
+import { AdminPersonasService } from './services/admin/admin-personas/admin-personas.service';
 
 import { AppComponent } from './app.component';
 import { NavbarInComponent } from './components/shared/navbar-in/navbar-in.component';
@@ -51,6 +51,8 @@ import { LoaderAdminComponent } from './components/shared/loader-admin/loader-ad
 import { MensajeAdminComponent } from './components/shared/mensaje-admin/mensaje-admin.component';
 import { MantenimientoUsuariosComponent } from './components/AdmLup/mantenimiento-usuarios/mantenimiento-usuarios.component';
 import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuario/formulario-usuario.component';
+import { MantenimientoPersonasComponent } from './components/AdmLup/mantenimiento-personas/mantenimiento-personas.component';
+import { FormularioPersonaComponent } from './components/AdmLup/formulario-persona/formulario-persona.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +87,9 @@ import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuar
     LoaderAdminComponent,
     MensajeAdminComponent,
     MantenimientoUsuariosComponent,
-    FormularioUsuarioComponent
+    FormularioUsuarioComponent,
+    MantenimientoPersonasComponent,
+    FormularioPersonaComponent
   ],
   imports: [
     BrowserModule,
@@ -102,7 +106,8 @@ import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuar
     PaisService,
     PersonaService,
     AdminEmpresasService,
-    AdminUsuariosService
+    AdminUsuariosService,
+    AdminPersonasService
   ],
   bootstrap: [AppComponent]
 })
