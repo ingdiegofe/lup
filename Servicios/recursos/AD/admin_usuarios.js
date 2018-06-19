@@ -22,7 +22,7 @@ server.route({
 function InformacionUsuario(request, reply){
 	Reply = reply;
 	_strSQL = 	"SELECT 	id_usuario, nombre,  " +
-		"CASE	  WHEN estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, " +
+		"estado, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, " +
 		"CASE  	WHEN logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, id_rol::int, " +
 		"to_char(fecha_creacion, 'yyyy/MM/dd hh:mm:ss') as fecha_creacion, to_char(fecha_ingreso, 'yyyy/MM/dd hh:mm:ss') as fecha_ingreso " +
 		"FROM 	ad_usuario " +

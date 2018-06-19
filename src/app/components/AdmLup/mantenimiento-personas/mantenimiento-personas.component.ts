@@ -12,6 +12,7 @@ export class MantenimientoPersonasComponent implements OnInit {
 
   constructor(private _adminPersonasService:AdminPersonasService, private router: Router) { }
 
+  PersonaABorrar = { id_persona: 0, nombres: "", apellidos: "" };
   personas = [];
   /*
   personas = [
@@ -22,6 +23,33 @@ export class MantenimientoPersonasComponent implements OnInit {
 
   ngOnInit() {
     this.ObtenerPersonas();
+  }
+
+  VerModalBorrarPersona(Persona){
+    this.PersonaABorrar = Persona;
+    console.log(this.PersonaABorrar);
+    $('#mdBorrarPersona').modal('show');
+  }
+
+  BorrarPersona(){
+    this._adminPersonasService.BorrarPersona({ idpersona: this.PersonaABorrar.id_persona })
+    .subscribe(data=>{
+        $('#mdBorrarPersona').modal('hide');
+        if(data.code==1){
+          DesplegarMensajeAdmin("Ok", data.message);
+          this.ObtenerPersonas();
+        }else{
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+    });
+  }
+
+  IrAFormularioModificar(idpersona){
+    this.router.navigate(['formP/modificar/' + idpersona]);
+  }
+
+  IrAFormularioInformacion(idpersona){
+    this.router.navigate(['formP/informacion/' + idpersona]);
   }
 
   IrAFormularioAgregar(){

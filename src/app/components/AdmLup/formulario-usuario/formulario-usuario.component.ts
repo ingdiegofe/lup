@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminUsuariosService } from '../../../services/admin/admin-usuarios/admin-usuarios.service';
+import { AdminPersonasService } from '../../../services/admin/admin-personas/admin-personas.service';
+import { AdminEmpresasService } from '../../../services/admin/admin-empresas/admin-empresas.service';
+
 declare function ValidarCampo(campo): any;
 declare function Cargando(): any;
 declare function Finalizado(): any;
@@ -17,8 +20,37 @@ export class FormularioUsuarioComponent implements OnInit {
   Titulo: string;
   Usuario = { id_usuario:0, nombre: "", fecha_creacion: "", fecha_ingreso: "", logueado:"", estado:"", id_rol:0  };
   roles = [];
+  Empresas = [];
+  Personas = [];
 
-  constructor(private _adminUsuariosService: AdminUsuariosService, private route: ActivatedRoute) { }
+  constructor(private _adminUsuariosService: AdminUsuariosService,
+              private _adminPersonasService: AdminPersonasService,
+              private _adminEmpresasService: AdminEmpresasService,
+              private route: ActivatedRoute) { }
+
+  ObtenerPersonas()
+  {
+    this._adminPersonasService.getPersonas()
+    .subscribe(data=>{
+    if(data.code==1){
+          this.Personas = data.data.body;
+        }else{
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+    });
+  }
+
+  ObtenerEmpresas()
+  {
+    this._adminEmpresasService.getEmpresas()
+    .subscribe(data=>{
+    if(data.code==1){
+          this.Empresas = data.data.body;
+        }else{
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+    });
+  }
 
   ListaRoles() {
     this._adminUsuariosService.ListaRoles()
@@ -55,6 +87,8 @@ export class FormularioUsuarioComponent implements OnInit {
     if (strOperacion == "agregar") {
       this.Titulo = "Agregar nuevo usuario";
         this.ListaRoles();
+        this.ObtenerPersonas();
+        this.ObtenerEmpresas();
     } else if (strOperacion == "informacion") {
       this.Titulo = "Información usuario";
       this.InfoUsuario();

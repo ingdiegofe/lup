@@ -87,7 +87,7 @@ function Correr(query, reply) {
       done();
       if (err) {
         reply({ success: false, data: null });
-        db.error(err.stack);
+        bitacora.error(err.stack);
       } else {
         reply({ success: true, data: result });
       }
@@ -176,7 +176,7 @@ function update(set, table, restriction, reply) {
       done();
       if (err) {
         reply({ success: false, data: null });
-        db.error(err.stack);
+        bitacora.error(err.stack);
       } else {
         reply({ success: true, data: result });
       }
@@ -202,7 +202,7 @@ function remove(table, restriction, reply) {
       done();
       if (err) {
         reply({ success: false, data: null });
-        db.error(err.stack);
+        bitacora.error(err.stack);
       } else {
         reply({ success: true, data: result });
       }

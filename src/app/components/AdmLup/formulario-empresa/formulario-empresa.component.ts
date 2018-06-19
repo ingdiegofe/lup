@@ -107,6 +107,7 @@ export class FormularioEmpresaComponent implements OnInit {
     } else if (strOperacion == "modificar") {
       this.Titulo = "Modificar empresa";
       this.InfoEmpresa();
+      this.ListaCategorias();
     }
     //this.ListaCategorias();
   }

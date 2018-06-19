@@ -19,9 +19,12 @@
       </div>
       <br/>
       <div class="row">
-        <div class="col-3" *ngIf="Operacion!='agregar'">
+        <div class="col-3">
           <label>Estado:</label>
-          <input type="text" class="form-control" placeholder="Estado" maxlength="10" [(ngModel)]="Usuario.estado" [disabled]="Operacion=='informacion'">
+          <select [(ngModel)]="Usuario.estado" [disabled]="Operacion=='informacion'" class="form-control">
+            <option value="0">Inactivo</option>
+            <option value="1">Activo</option>
+          </select>
         </div>
         <div class="col-3">
           <div *ngIf="roles">
@@ -30,6 +33,21 @@
               <option *ngFor="let rol of roles" [ngValue]="rol.id_rol">{{ rol.nombre }}</option>
             </select>
           </div>
+        </div>
+      </div>
+      <br/>
+      <div class="row">
+        <div class="col-6" *ngIf="Usuario.id_rol!=2 && Usuario.id_rol!=0">
+          <label>Persona:</label>
+          <select class="form-control" [(ngModel)]="Usuario.id_persona" [disabled]="Operacion=='informacion'">
+            <option *ngFor="let persona of Personas" [ngValue]="persona.id_persona">{{ persona.nombres + ' ' + persona.apellidos }}</option>
+          </select>
+        </div>
+        <div class="col-6" *ngIf="Usuario.id_rol==2">
+          <label>Empresa:</label>
+          <select class="form-control" [(ngModel)]="Usuario.id_empresa" [disabled]="Operacion=='informacion'">
+            <option *ngFor="let empresa of Empresas" [ngValue]="empresa.id_empresa">{{ empresa.nombre }}</option>
+          </select>
         </div>
       </div>
       <br/>

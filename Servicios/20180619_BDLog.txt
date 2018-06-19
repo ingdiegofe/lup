@@ -1,0 +1,83 @@
+07:05:56 AM =>  SELECT * FROM ad_usuario  WHERE  nombre = 'mrodriguez' ORDER BY 1
+07:05:56 AM =>  UPDATE ad_usuario SET fecha_ingreso = now(),logueado = '1',fecha_modificacion = now() WHERE id_usuario = 1
+07:06:02 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:06:07 AM => SELECT id_persona, nombres, apellidos, email, dpi, to_char(fecha_nacimiento, 'yyyy/MM/dd') as fecha_nacimiento, celular, direccion, to_char(fecha_modificacion, 'yyyy/MM/dd') as fecha_modificacion, genero::int as genero FROM   ad_persona WHERE	id_persona = 2
+07:06:52 AM =>  UPDATE ad_persona SET  nombres = 'Mario Augusto', apellidos = 'Rodriguez', email = 'rodmario193@gmail.com', fecha_nacimiento = '1990/03/19', genero = B'1' , celular = '56234518', dpi = '2439833520101', direccion = 'Quinta los Encinos 1 casa A7', fecha_modificacion = now()  WHERE id_persona = 2
+07:06:55 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:06:58 AM => SELECT id_persona, nombres, apellidos, email, dpi, to_char(fecha_nacimiento, 'yyyy/MM/dd') as fecha_nacimiento, celular, direccion, to_char(fecha_modificacion, 'yyyy/MM/dd') as fecha_modificacion, genero::int as genero FROM   ad_persona WHERE	id_persona = 2
+07:07:01 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:07:08 AM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+07:07:12 AM =>  DELETE FROM ad_empresa WHERE id_empresa = 9
+07:07:13 AM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+07:07:18 AM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+07:07:20 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:09:58 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:10:05 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:10:09 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:10:17 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:12:59 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:13:04 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:13:11 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:14:19 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:14:56 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:15:19 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:15:23 AM =>  DELETE FROM ad_persona WHERE id_persona = 7
+07:16:15 AM =>  DELETE FROM ad_persona WHERE id_persona = 7
+07:23:15 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:23:19 AM => UPDATE ad_usuario SET id_persona = null WHERE id_persona = 7
+07:23:19 AM =>  DELETE FROM ad_persona WHERE id_persona = 7
+07:23:19 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:23:27 AM => UPDATE ad_usuario SET id_persona = null WHERE id_persona = 3
+07:23:27 AM =>  DELETE FROM ad_persona WHERE id_persona = 3
+07:23:27 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:24:21 AM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+07:24:25 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:24:29 AM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+07:24:32 AM => SELECT 	id_usuario, nombre,  CASE	  WHEN estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, id_rol::int, to_char(fecha_creacion, 'yyyy/MM/dd hh:mm:ss') as fecha_creacion, to_char(fecha_ingreso, 'yyyy/MM/dd hh:mm:ss') as fecha_ingreso FROM 	ad_usuario WHERE	id_usuario = 1
+07:24:32 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:24:40 AM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+07:24:43 AM => SELECT 	id_usuario, nombre,  CASE	  WHEN estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, id_rol::int, to_char(fecha_creacion, 'yyyy/MM/dd hh:mm:ss') as fecha_creacion, to_char(fecha_ingreso, 'yyyy/MM/dd hh:mm:ss') as fecha_ingreso FROM 	ad_usuario WHERE	id_usuario = 1
+07:24:43 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:24:45 AM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+07:24:46 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:26:27 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:26:33 AM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+07:26:35 AM => SELECT 	id_usuario, nombre,  CASE	  WHEN estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, id_rol::int, to_char(fecha_creacion, 'yyyy/MM/dd hh:mm:ss') as fecha_creacion, to_char(fecha_ingreso, 'yyyy/MM/dd hh:mm:ss') as fecha_ingreso FROM 	ad_usuario WHERE	id_usuario = 1
+07:26:35 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:27:50 AM => SELECT 	id_usuario, nombre,  CASE	  WHEN estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, id_rol::int, to_char(fecha_creacion, 'yyyy/MM/dd hh:mm:ss') as fecha_creacion, to_char(fecha_ingreso, 'yyyy/MM/dd hh:mm:ss') as fecha_ingreso FROM 	ad_usuario WHERE	id_usuario = 1
+07:27:50 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:28:52 AM => SELECT 	id_usuario, nombre,  estado, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, id_rol::int, to_char(fecha_creacion, 'yyyy/MM/dd hh:mm:ss') as fecha_creacion, to_char(fecha_ingreso, 'yyyy/MM/dd hh:mm:ss') as fecha_ingreso FROM 	ad_usuario WHERE	id_usuario = 1
+07:28:53 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:28:58 AM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+07:28:59 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:29:28 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:29:57 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:30:14 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:30:20 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:30:27 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:31:04 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:31:10 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:31:24 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:31:35 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:31:45 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:32:00 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:32:24 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:32:35 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:32:43 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:32:58 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:36:08 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:37:22 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:37:35 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:38:15 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:38:43 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:40:19 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:40:25 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:42:50 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:43:24 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:43:24 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:43:32 AM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+07:43:32 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:43:32 AM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+07:43:51 AM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+07:43:53 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+07:44:09 AM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona

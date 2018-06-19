@@ -19,11 +19,11 @@
       </div>
       <br/>
       <div class="row">
-        <div class="col-3">
+        <div class="col-6">
           <label>Email:</label>
           <input type="email" class="form-control" placeholder="Correo electónico" maxlength="50" [(ngModel)]="Persona.email" [disabled]="Operacion=='informacion'">
         </div>
-        <div class="col-3">
+        <div class="col-6">
           <label>Fecha de nacimiento:</label>
           <input type="text" class="form-control" placeholder="dd/mm/yyyy" maxlength="50" [(ngModel)]="Persona.fecha_nacimiento" [disabled]="Operacion=='informacion'">
         </div>
@@ -42,7 +42,7 @@
         </div>
         <div class="col-3">
             <label>Genero:</label>
-            <select [(ngModel)]="Persona.genero" class="form-control">
+            <select [(ngModel)]="Persona.genero" class="form-control" [disabled]="Operacion=='informacion'">
               <option value="0">Femenino</option>
               <option value="1">Masculino</option>
             </select>
@@ -61,7 +61,7 @@
         <button class="btn btn-outline-info" (click)="AgregarPersona()">Guardar</button>
       </div>
       <div *ngIf="Operacion == 'modificar'">
-        <button class="btn btn-outline-info">Modificar</button>
+        <button class="btn btn-outline-info" (click)="ActualizarPersona()">Modificar</button>
       </div>
       <button class="btn btn-sm btn-link" onclick=" window.location = '#/mantP'; ">Regresar</button>
     </div>
