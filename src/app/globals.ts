@@ -13,6 +13,9 @@ export class Globals{
   MantUsuarios: string;
   MantPersonas: string;
   MantNoticias: string;
+  Noticia: string;
+  Categoria: string;
+  Empresa: string;
 
   //LUP
   vision:string;
@@ -33,6 +36,9 @@ export class Globals{
     this.MantUsuarios = this.url + "/admin-usuarios";
     this.MantPersonas = this.url + "/admin-personas";
     this.MantNoticias = this.url + "/admin-noticias";
+    this.Noticia = this.url + "/in/noticia";
+    this.Categoria = this.url + "/in/categoria";
+    this.Empresa = this.url + "/in/empresa";
 
 
     this.vision = "Ser el principal motor del \

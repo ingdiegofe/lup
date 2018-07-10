@@ -3,6 +3,10 @@
   height:620px;
 }
 
+.imgFrase{
+  height: 650px;
+}
+
 #threed {
   transition-property: opacity;
 transition-duration: 2s;

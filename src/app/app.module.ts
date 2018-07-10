@@ -19,6 +19,11 @@ import { AdminEmpresasService } from './services/admin/admin-empresas/admin-empr
 import { AdminUsuariosService } from './services/admin/admin-usuarios/admin-usuarios.service';
 import { AdminPersonasService } from './services/admin/admin-personas/admin-personas.service';
 import { AdminNoticiasService } from './services/admin/admin-noticias/admin-noticias.service';
+import { NoticiaService } from './services/noticia/noticia.service';
+import { CategoriaService } from './services/categoria/categoria.service';
+import { EmpresaService } from './services/empresa/empresa.service';
+
+
 
 import { AppComponent } from './app.component';
 import { NavbarInComponent } from './components/shared/navbar-in/navbar-in.component';
@@ -113,7 +118,10 @@ import { FormularioNoticiaComponent } from './components/AdmLup/formulario-notic
     AdminEmpresasService,
     AdminUsuariosService,
     AdminPersonasService,
-    AdminNoticiasService
+    AdminNoticiasService,
+    NoticiaService,
+    CategoriaService,
+    EmpresaService
   ],
   bootstrap: [AppComponent]
 })

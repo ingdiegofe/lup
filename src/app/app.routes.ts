@@ -31,7 +31,7 @@ const APP_ROUTES: Routes = [
   { path: 'inicio', component: InicioComponent },
   { path: 'conf', component: ConfComponent },
   { path: 'CatEmp', component: CatEmpresaComponent },
-  { path: 'SubEmp', component: SubEmpresaComponent },
+  { path: 'SubEmp/:idCat/:cat', component: SubEmpresaComponent },
   { path: 'Emp', component: EmpresaComponent },
   { path: 'Accion', component: AccionComponent },
   { path: 'blog', component: BlogComponent },
