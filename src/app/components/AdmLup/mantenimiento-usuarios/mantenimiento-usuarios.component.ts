@@ -11,6 +11,7 @@ declare function DesplegarMensajeAdmin(strTipo, strMensaje): any;
 export class MantenimientoUsuariosComponent implements OnInit {
 
   usuarios = [];
+  UsuarioABorrar = { id_usuario: 0, nombre: "" }
 
   constructor(private _adminUsuariosService:AdminUsuariosService, private router: Router) { }
 
@@ -18,8 +19,31 @@ export class MantenimientoUsuariosComponent implements OnInit {
     this.ObtenerUsuarios();
   }
 
+  VerModalBorrarUsuario(Usuario){
+    this.UsuarioABorrar = Usuario;
+    $('#mdBorrarUsuario').modal('show');
+  }
+
+  BorrarUsuario(){
+    this._adminUsuariosService.BorrarUsuario({ idusuario: this.UsuarioABorrar.id_usuario })
+    .subscribe(data=>{
+        $('#mdBorrarUsuario').modal('hide');
+        if(data.code==1){
+          DesplegarMensajeAdmin("Ok", data.message);
+          this.ObtenerUsuarios();
+        }else{
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+    });
+  }
+
   IrAAgregarUsuario(){
     this.router.navigate(['formU/agregar/0']);
+  }
+
+  IrAModificarUsuario(Usuario){
+    console.log(Usuario);
+    this.router.navigate(['formU/modificar/' + Usuario.id_usuario ]);
   }
 
   IrAFormularioUsuario(Usuario){

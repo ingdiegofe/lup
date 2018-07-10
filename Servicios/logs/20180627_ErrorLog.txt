@@ -1,4 +1,4 @@
-07:16:15 AM => error: update or delete on table "ad_persona" violates foreign key constraint "fk_ad_usuario_ad_persona" on table "ad_usuario"
+10:28:59 PM => error: syntax error at or near ","
     at Connection.parseE (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:569:11)
     at Connection.parseMessage (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:396:17)
     at Socket.<anonymous> (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:132:22)

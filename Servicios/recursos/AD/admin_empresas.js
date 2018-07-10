@@ -73,7 +73,9 @@ function ActualizarEmpresa(request, reply){
 	Empresa = request.payload.empresa;
 
 	// Validar valores obligatorios
-	if( !funciones.validaParametro(Empresa.nombre) ){
+	if( !funciones.validaParametro(Empresa.nombre) ||
+		  !funciones.validaParametro(Empresa.usuario_modifica)
+		){
 		Reply({ code: 0, message: "Nombre de empresa no puede ir en blanco" });
 	}else{
 		// Validar que nuevo nombre no exista en base de datos
@@ -94,7 +96,10 @@ function cbVerificarEmpresaRepetidaAct(result){
 		if (funciones.validaParametro(Empresa.url)) strSQLSet += ", url = '" + Empresa.url  + "'";
 		if (funciones.validaParametro(Empresa.nit)) strSQLSet += ", nit= '" + Empresa.nit + "'";
 		if (funciones.validaParametro(Empresa.representante_legal)) strSQLSet += ", representante_legal= '" + Empresa.representante_legal + "'";
-		// update(set, table, restriction, reply)
+
+		// Actualizar parametros internos
+		strSQLSet += ", fecha_modificacion = now(), usuario_modifica = " + Empresa.usuario_modifica;
+
 		dbManager.update(strSQLSet, 'ad_empresa', "id_empresa = " + Empresa.id_empresa, cbActualizarEmpresa);
 	}
 }
@@ -152,7 +157,8 @@ function AgregarEmpresa(request, reply) {
 	Reply = reply;
 	Empresa = request.payload.empresa;
 	// Validar parametros obligatorios
-	if (!funciones.validaParametro(Empresa.nombre)) {
+	if ( !funciones.validaParametro(Empresa.nombre) ||
+ 			 !funciones.validaParametro(Empresa.usuario_modifica) ) {
 	  Reply({ code: 0, message: "Error en solicitud = > " + JSON.stringify(request.payload.empresa) });
 	} else {
 	  // Validar que no exista otra empresa con el mismo nombre => PENDIENTE
@@ -204,7 +210,7 @@ function cbVerificarEmpresaRepetida(result){
 			}
 			// Agregar campos de gestión internos
 			_strCampos += ", fecha_creacion, estado, fecha_modificacion, usuario_modifica";
-			_strValores += ", now(), 1, now(), 4";
+			_strValores += ", now(), 1, now(), " + Empresa.usuario_modifica;
 			dbManager.add(_strCampos, "ad_empresa", _strValores, cbAddEmpresa);
 		}
 	}

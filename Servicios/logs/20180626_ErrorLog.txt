@@ -1,4 +1,4 @@
-10:27:38 PM => error: date/time field value out of range: "19/03/1990"
+07:43:23 AM => error: syntax error at or near ","
     at Connection.parseE (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:569:11)
     at Connection.parseMessage (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:396:17)
     at Socket.<anonymous> (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:132:22)
@@ -8,7 +8,7 @@
     at readableAddChunk (_stream_readable.js:250:11)
     at Socket.Readable.push (_stream_readable.js:208:10)
     at TCP.onread (net.js:607:20)
-10:28:03 PM => error: column "genero" is of type bit but expression is of type integer
+09:47:17 PM => error: syntax error at or near ","
     at Connection.parseE (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:569:11)
     at Connection.parseMessage (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:396:17)
     at Socket.<anonymous> (C:\Users\rodma\SISTEMAS\Proyectos\lup\Servicios\node_modules\pg\lib\connection.js:132:22)

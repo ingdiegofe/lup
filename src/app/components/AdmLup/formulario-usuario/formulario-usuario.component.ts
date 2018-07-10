@@ -18,82 +18,124 @@ export class FormularioUsuarioComponent implements OnInit {
 
   Operacion: string;
   Titulo: string;
-  Usuario = { id_usuario:0, nombre: "", fecha_creacion: "", fecha_ingreso: "", logueado:"", estado:"", id_rol:0  };
+  Usuario = { id_usuario: 0, nombre: "", fecha_creacion: "", fecha_ingreso: "", logueado: "", estado: "", id_rol: 0, id_persona: 0, id_empresa: 0 };
   roles = [];
   Empresas = [];
   Personas = [];
 
   constructor(private _adminUsuariosService: AdminUsuariosService,
-              private _adminPersonasService: AdminPersonasService,
-              private _adminEmpresasService: AdminEmpresasService,
-              private route: ActivatedRoute) { }
+    private _adminPersonasService: AdminPersonasService,
+    private _adminEmpresasService: AdminEmpresasService,
+    private route: ActivatedRoute) { }
 
-  ObtenerPersonas()
-  {
-    this._adminPersonasService.getPersonas()
-    .subscribe(data=>{
-    if(data.code==1){
-          this.Personas = data.data.body;
-        }else{
-          DesplegarMensajeAdmin("Error", data.message);
-        }
-    });
+  ActualizarUsuario() {
+    let _strMensaje = "";
+    // Validar campos obligatorios de empresa
+    if (!ValidarCampo(this.Usuario.nombre)) {
+      _strMensaje = "Se deben ingresar todos los campos obligatorios";
+    }
+    // Validar campos no obligatorios
+
+    if (_strMensaje != "") {
+      DesplegarMensajeAdmin("Error", _strMensaje);
+    } else {
+      Cargando();
+      this._adminUsuariosService.ActualizarUsuario({ usuario: this.Usuario })
+        .subscribe(data => {
+          Finalizado();
+          if (data.code == 1) {
+            DesplegarMensajeAdmin("Ok", data.message);
+          } else {
+            DesplegarMensajeAdmin("Error", data.message);
+          }
+        });
+    }
   }
 
-  ObtenerEmpresas()
-  {
-    this._adminEmpresasService.getEmpresas()
-    .subscribe(data=>{
-    if(data.code==1){
-          this.Empresas = data.data.body;
-        }else{
+  ObtenerPersonas() {
+    this._adminPersonasService.getPersonas()
+      .subscribe(data => {
+        if (data.code == 1) {
+          this.Personas = data.data.body;
+          this.ObtenerEmpresas();
+        } else {
           DesplegarMensajeAdmin("Error", data.message);
         }
-    });
+      });
+  }
+
+  ObtenerEmpresas() {
+    this._adminEmpresasService.getEmpresas()
+      .subscribe(data => {
+        if (data.code == 1) {
+          this.Empresas = data.data.body;
+          if (this.Operacion != 'agregar') {
+            this.InfoUsuario();
+          }
+        } else {
+          DesplegarMensajeAdmin("Error", data.message);
+        }
+      });
   }
 
   ListaRoles() {
     this._adminUsuariosService.ListaRoles()
       .subscribe(data => {
         if (data.code == 1) {
-          console.log(data.data.body);
           this.roles = data.data.body;
-          console.log("Id rol es de tipo => " + typeof this.roles[0].id_rol);
+          this.ObtenerPersonas();
         } else {
           DesplegarMensajeAdmin("Error", data.message);
         }
       });
+  }
+
+  AgregarUsuario() {
+    let _strMensaje = "";
+    // Validar campos obligatorios de persona
+    if (!ValidarCampo(this.Usuario.nombre) || !ValidarCampo(this.Usuario.estado) || !ValidarCampo(this.Usuario.id_rol)) {
+      _strMensaje = "Se deben ingresar todos los campos obligatorios";
+    }
+
+    if (_strMensaje != "") {
+      DesplegarMensajeAdmin("Error", _strMensaje);
+    } else {
+      this._adminUsuariosService.AgregarUsuario({ usuario: this.Usuario })
+        .subscribe(data => {
+          if (data.code == 1) {
+            DesplegarMensajeAdmin("Ok", data.message);
+          } else {
+            DesplegarMensajeAdmin("Error", data.message);
+          }
+        });
+    }
   }
 
   InfoUsuario() {
     let idUsuario = this.route.snapshot.params['idusuario'];
     this._adminUsuariosService.InfoUsuario({ idusuario: idUsuario })
       .subscribe(data => {
-        Finalizado();
         if (data.code == 1) {
-          console.log(data.body.usuario[0]);
           this.Usuario = data.body.usuario[0];
-          console.log(typeof this.Usuario.id_rol);
-          this.ListaRoles();
         } else {
           DesplegarMensajeAdmin("Error", data.message);
         }
       });
   }
 
+
   ngOnInit() {
     let strOperacion = this.route.snapshot.params['operacion'];
     this.Operacion = strOperacion;
     if (strOperacion == "agregar") {
       this.Titulo = "Agregar nuevo usuario";
-        this.ListaRoles();
-        this.ObtenerPersonas();
-        this.ObtenerEmpresas();
+      this.ListaRoles();
     } else if (strOperacion == "informacion") {
       this.Titulo = "Información usuario";
-      this.InfoUsuario();
+      this.ListaRoles();
     } else if (strOperacion == "modificar") {
       this.Titulo = "Modificar usuario";
+      this.ListaRoles();
     }
 
   }

@@ -18,11 +18,46 @@ export class AdminUsuariosService {
 
     return this.http.post(postUrl, idusuario, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
 
+  BorrarUsuario(idusuario){
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+    let postUrl = this.url + '/borrar-usuario';
+
+    return this.http.post(postUrl, idusuario, { headers: headers })
+    .map(res => {
+      //console.log(res.json());
+      return res.json();
+    });
+  }
+
+  ActualizarUsuario(usuario){
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+    let postUrl = this.url + '/actualizar-usuario';
+
+    return this.http.post(postUrl, usuario, { headers: headers })
+    .map(res => {
+      //console.log(res.json());
+      return res.json();
+    });
+  }
+
+  AgregarUsuario(usuario){
+    let token = localStorage.getItem('token');
+    let headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': token });
+    let postUrl = this.url + '/agregar-usuario';
+
+    return this.http.post(postUrl, usuario, { headers: headers })
+    .map(res => {
+      //console.log(res.json());
+      return res.json();
+    });
+  }
 
   ListaRoles(){
     let token = localStorage.getItem('token');
@@ -31,7 +66,7 @@ export class AdminUsuariosService {
 
     return this.http.get(getUrl, { headers: headers })
       .map(res => {
-        console.log(res.json());
+        //console.log(res.json());
         return res.json();
       });
   }
@@ -44,7 +79,7 @@ export class AdminUsuariosService {
 
     return this.http.get(getUrl, { headers: headers })
       .map(res => {
-        console.log(res.json());
+        //console.log(res.json());
         return res.json();
       });
 

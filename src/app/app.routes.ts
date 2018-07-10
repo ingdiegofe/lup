@@ -19,6 +19,8 @@ import { MantenimientoUsuariosComponent } from './components/AdmLup/mantenimient
 import { FormularioUsuarioComponent } from './components/AdmLup/formulario-usuario/formulario-usuario.component';
 import { MantenimientoPersonasComponent } from './components/AdmLup/mantenimiento-personas/mantenimiento-personas.component';
 import { FormularioPersonaComponent } from './components/AdmLup/formulario-persona/formulario-persona.component';
+import { MantenimientoNoticiasComponent } from './components/AdmLup/mantenimiento-noticias/mantenimiento-noticias.component';
+import { FormularioNoticiaComponent } from './components/AdmLup/formulario-noticia/formulario-noticia.component';
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
@@ -41,6 +43,8 @@ const APP_ROUTES: Routes = [
   { path: 'formU/:operacion/:idusuario', component: FormularioUsuarioComponent },
   { path: 'mantP', component: MantenimientoPersonasComponent },
   { path: 'formP/:operacion/:idpersona', component: FormularioPersonaComponent },
+  { path: 'mantN', component: MantenimientoNoticiasComponent },
+  { path: 'formN/:operacion/:idpersona', component: FormularioNoticiaComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

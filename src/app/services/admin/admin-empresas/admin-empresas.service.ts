@@ -17,7 +17,7 @@ export class AdminEmpresasService {
 
     return this.http.get(getUrl, { headers: headers })
       .map(res => {
-        console.log(res.json());
+        //console.log(res.json());
         return res.json();
       });
   }
@@ -29,7 +29,7 @@ export class AdminEmpresasService {
 
     return this.http.post(postUrl, idempresa, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
@@ -41,7 +41,7 @@ export class AdminEmpresasService {
 
     return this.http.post(postUrl, idempresa, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
@@ -53,7 +53,7 @@ export class AdminEmpresasService {
 
     return this.http.post(postUrl, empresa, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
@@ -65,7 +65,7 @@ export class AdminEmpresasService {
 
     return this.http.post(postUrl, empresa, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
@@ -78,7 +78,7 @@ export class AdminEmpresasService {
 
     return this.http.get(getUrl, { headers: headers })
       .map(res => {
-        console.log(res.json());
+        //console.log(res.json());
         return res.json();
       });
 

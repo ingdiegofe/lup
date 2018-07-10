@@ -4,7 +4,7 @@ var dateFormat = require("dateformat");
 var fnError = function Error(strMsjError){
 	var _fechaHoy = dateFormat(new Date(), "yyyymmdd");
 	var _strLineaLog = dateFormat(new Date(), "hh:MM:ss TT") +  " => " + strMsjError + '\n';
-	fs.appendFile(_fechaHoy + "_ErrorLog.txt", _strLineaLog, function (err) {
+	fs.appendFile('logs/' + _fechaHoy + "_ErrorLog.txt", _strLineaLog, function (err) {
 		if (err) throw err;
 	});
 }
@@ -12,7 +12,7 @@ var fnError = function Error(strMsjError){
 var fndbLog = function dblog(strQuery){
 	var _fechaHoy = dateFormat(new Date(), "yyyymmdd");
 	var _strLineaLog = dateFormat(new Date(), "hh:MM:ss TT") +  " => " + strQuery + '\n';
-	fs.appendFile(_fechaHoy + "_BDLog.txt", _strLineaLog, function (err) {
+	fs.appendFile('logs/' + _fechaHoy + "_BDLog.txt", _strLineaLog, function (err) {
 		if (err) throw err;
 	});
 }

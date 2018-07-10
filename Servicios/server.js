@@ -57,6 +57,9 @@ server.register(require('hapi-auth-jwt-simple'), function(err) {
   var admin_personas = require('./recursos/AD/admin_personas');
   admin_personas.init(server, config);
 
+  var admin_noticias = require('./recursos/AD/admin_noticias');
+  admin_noticias.init(server, config);
+
   var email = require('./recursos/email')
   email.init(server, config);
 

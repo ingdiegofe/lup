@@ -17,7 +17,7 @@ export class AdminPersonasService {
 
     return this.http.post(postUrl, idpersona, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
@@ -29,7 +29,7 @@ export class AdminPersonasService {
 
     return this.http.post(postUrl, idpersona, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
@@ -42,7 +42,7 @@ export class AdminPersonasService {
 
     return this.http.get(getUrl, { headers: headers })
       .map(res => {
-        console.log(res.json());
+        //console.log(res.json());
         return res.json();
       });
 
@@ -55,7 +55,7 @@ export class AdminPersonasService {
 
     return this.http.post(postUrl, persona, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }
@@ -67,7 +67,7 @@ export class AdminPersonasService {
 
     return this.http.post(postUrl, persona, { headers: headers })
     .map(res => {
-      console.log(res.json());
+      //console.log(res.json());
       return res.json();
     });
   }

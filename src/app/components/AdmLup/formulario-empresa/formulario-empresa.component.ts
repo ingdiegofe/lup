@@ -48,7 +48,6 @@ export class FormularioEmpresaComponent implements OnInit {
     this._adminEmpresasService.ListaCategorias()
       .subscribe(data => {
         if (data.code == 1) {
-          console.log(data.data.body);
           this.categorias = data.data.body;
         } else {
           DesplegarMensajeAdmin("Error", data.message);
@@ -107,7 +106,6 @@ export class FormularioEmpresaComponent implements OnInit {
     } else if (strOperacion == "modificar") {
       this.Titulo = "Modificar empresa";
       this.InfoEmpresa();
-      this.ListaCategorias();
     }
     //this.ListaCategorias();
   }

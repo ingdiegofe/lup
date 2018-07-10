@@ -1,6 +1,7 @@
 
 function Finalizado(){
-	$('#mdLoading').modal('hide');
+	//$('#mdLoading').modal('hide');
+	setInterval(function(){ $('#mdLoading').modal('hide'); }, 2000);
 }
 
 function Cargando(){

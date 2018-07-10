@@ -8,9 +8,12 @@ function concatenarSQL(query,instruccion,simbolo){
 }
 
 function validaParametro(parametro){
-    if(parametro != "" && parametro != null && parametro != 'null'){
+    if(parametro == 0){
+      return true;
+    }else if(parametro != "" && parametro != null && parametro != 'null'){
         return true;
     }else{
+        console.log("Parametro invalido => " + parametro);
         return false;
     }
 }

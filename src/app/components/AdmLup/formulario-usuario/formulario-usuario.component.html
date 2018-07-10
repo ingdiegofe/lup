@@ -67,10 +67,10 @@
       </div>
       <br/>
       <div *ngIf="Operacion == 'agregar'">
-        <button class="btn btn-sm btn-admin-lup">Guardar</button>
+        <button class="btn btn-sm btn-admin-lup" (click)="AgregarUsuario()">Guardar</button>
       </div>
       <div *ngIf="Operacion == 'modificar'">
-        <button class="btn btn-sm btn-admin-lup">Modificar</button>
+        <button class="btn btn-sm btn-admin-lup" (click)="ActualizarUsuario()">Modificar</button>
       </div>
       <button class="btn btn-sm btn-link" onclick=" window.location = '#/mantU'; ">Regresar</button>
     </div>
