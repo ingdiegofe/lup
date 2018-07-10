@@ -62,6 +62,16 @@ server.register(require('hapi-auth-jwt-simple'), function(err) {
 
   var email = require('./recursos/email')
   email.init(server, config);
+	
+
+var noticias = require('./recursos/IN/noticias')
+    noticias.init(server, config);
+
+    var categoria = require('./recursos/IN/categoria')
+    categoria.init(server, config);
+
+    var empresa = require('./recursos/IN/empresa')
+    empresa.init(server, config);
 
 
 });

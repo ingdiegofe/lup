@@ -1,0 +1,28 @@
+10:08:39 PM =>  SELECT * FROM ad_usuario  WHERE  nombre = 'admin' ORDER BY 1
+10:08:40 PM =>  UPDATE ad_usuario SET nombre = '',estado = ,fecha_ingreso = now(),logueado = '1',fecha_modificacion = now(),clave = '$2a$10$TAtS1jXkq4LrjQ9QRl3TC.RCx9yqcQm1qq/hs3B8ZvTErBFrl0v7m' WHERE id_usuario = 4
+10:08:48 PM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+10:08:54 PM =>  SELECT id_categoria_empresa, nombre FROM ad_categoria_empresa WHERE 1=1 ORDER BY 1
+10:08:56 PM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+10:08:57 PM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+10:09:00 PM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+10:09:00 PM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+10:09:00 PM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+10:09:25 PM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+10:10:16 PM =>  INSERT INTO ad_persona(nombres, apellidos, email, fecha_nacimiento, genero , celular, dpi, direccion, fecha_creacion, fecha_modificacion )VALUES('Monica', 'Paz', 'mpaz@gmail.com', '30/10/1989', B'0', '54144544', '267876540101', 'zona 21', now(), now())
+10:11:26 PM =>  INSERT INTO ad_persona(nombres, apellidos, email, fecha_nacimiento, genero , celular, dpi, direccion, fecha_creacion, fecha_modificacion )VALUES('Monica', 'Paz', 'mpaz@gmail.com', '01/01/1989', B'0', '54144544', '267876540101', 'zona 21', now(), now())
+10:11:29 PM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+10:11:41 PM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+10:11:51 PM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+10:11:55 PM =>  SELECT id_rol, nombre FROM ad_rol WHERE 1=1 ORDER BY 1
+10:11:55 PM => SELECT id_persona, nombres, apellidos, to_char(fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion FROM   ad_persona
+10:11:55 PM => SELECT E.id_empresa, E.nombre, to_char(E.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_empresa E, ad_usuario U WHERE E.usuario_modifica = U.id_usuario 
+10:12:13 PM => SELECT * FROM 	ad_usuario WHERE 	nombre = 'mpaz'
+10:12:13 PM =>  INSERT INTO ad_usuario(nombre, estado, id_persona, id_empresa, id_rol , fecha_creacion, fecha_modificacion, clave, logueado )VALUES('mpaz', 1, 8, 'null', 1, now(), now(), 'abc123', B'0')
+10:12:40 PM => SELECT * FROM 	ad_usuario WHERE 	nombre = 'mpaz'
+10:12:40 PM =>  INSERT INTO ad_usuario(nombre, estado, id_persona, id_empresa, id_rol , fecha_creacion, fecha_modificacion, clave, logueado )VALUES('mpaz', 1, 8, 'null', 3, now(), now(), 'abc123', B'0')
+10:13:15 PM => SELECT 	U.id_usuario, U.nombre,  CASE	WHEN U.estado = 1 THEN 'Activo' ELSE 'Inactivo' END as estado, to_char(U.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, CASE  	WHEN U.logueado::int = 1 THEN 'Si' ELSE 'No' END as logueado, R.nombre  as rol FROM 	ad_usuario U, ad_rol R WHERE	R.id_rol = U.id_rol
+10:13:17 PM => SELECT N.id_noticia, N.titulo, to_char(N.fecha_modificacion, 'yyyy/MM/dd hh:mm:ss') as fecha_modificacion, U.nombre AS usuario_modifica FROM ad_noticia N, ad_usuario U WHERE N.usuario_modifica = U.id_usuario 
+10:13:35 PM =>  INSERT INTO ad_noticia(titulo, texto, imagen, fecha_creacion, fecha_modificacion, usuario_modifica)VALUES('Noticia MAgo', 'Mago arregla el clavo','imagendummy.png', now(), now(), 1)
+10:14:08 PM =>  SELECT * FROM ad_usuario  WHERE  nombre = 'dfernandez' ORDER BY 1
+10:14:09 PM =>  UPDATE ad_usuario SET nombre = '',estado = ,fecha_ingreso = now(),logueado = '1',fecha_modificacion = now(),clave = '$2a$10$kkGK5lcEFZcWXvYqaeyDlu7mXhj2gy5vW4fpmL53Fqj9MrF3rHryq' WHERE id_usuario = 2
+10:16:19 PM =>  select  *  from  ad_noticia where 1 = 1 order by fecha_creacion desc limit 50 
